@@ -1,0 +1,135 @@
+---
+sidebar_position: 2
+sidebar_label: Agile et Scrum
+description: Le vocabulaire de base de l'approche agile et du cadre Scrum
+---
+
+# Agile et Scrum
+
+## Le problème que l'agilité cherche à régler
+
+L'approche traditionnelle consiste à tout spécifier au début, puis à tout
+construire, puis à tout livrer. Elle fonctionne quand on sait exactement ce
+qu'on veut et que rien ne change. En développement logiciel, c'est rarement le
+cas : on découvre ce qu'on veut *en le construisant*, et le client change
+d'idée en voyant le résultat.
+
+L'approche agile inverse le pari : plutôt que de tout prévoir une fois, on
+livre **un petit morceau qui fonctionne**, on le montre, on apprend, et on
+ajuste. Puis on recommence. Chaque tour s'appelle une **itération**.
+
+| Approche séquentielle | Approche itérative |
+|---|---|
+| Une seule livraison, à la fin | Une livraison à chaque itération |
+| Le plan est figé; les écarts sont des erreurs | Le plan est révisé à chaque itération |
+| On découvre les problèmes à la fin | On découvre les problèmes tôt |
+| Le client voit le produit une fois | Le client voit le produit régulièrement |
+
+Le [manifeste agile](https://agilemanifesto.org/iso/fr/manifesto.html) tient sur
+une page et résume l'idée en quatre valeurs. Lisez-le une fois.
+
+---
+
+## Scrum, en une page
+
+[Scrum](https://www.atlassian.com/fr/agile/scrum) est le cadre agile le plus
+répandu. Il définit trois choses : des **rôles**, des **artefacts** et des
+**événements**. Rien d'autre. Ce n'est pas une méthode de programmation, c'est
+une façon d'organiser le travail d'une équipe.
+
+### Les rôles
+
+| Rôle | Qui c'est | Ce qu'il fait |
+|---|---|---|
+| **Product Owner** (propriétaire du produit) | En entreprise, le client; dans ce cours, **votre équipe** | Possède le backlog : décide *quoi* construire et dans quel ordre. Arbitre les priorités. |
+| **Client** (partie prenante) | **Le professeur** | Approuve le sujet, assiste aux revues, réagit à l'incrément. Ne remplit pas votre backlog à votre place. |
+| **[Scrum Master](https://www.atlassian.com/fr/agile/scrum/scrum-master)** (responsable de la mêlée) | Un membre de l'équipe, **à tour de rôle** | Veille à ce que les rituels aient lieu, débloque l'équipe, protège le sprint |
+| **Équipe de développement** | Vous | Décide *comment* construire, et le construit |
+
+Le responsable de la mêlée n'est pas un chef. Il ne distribue pas les tâches :
+l'équipe s'organise elle-même. Son travail est de faire tourner le processus.
+
+### Les artefacts
+
+| Artefact | En clair |
+|---|---|
+| **Backlog produit** | La liste ordonnée de tout ce que le produit pourrait faire. Voir [Backlog et priorisation](./4_backlog_et_priorisation.mdx). |
+| **Backlog de sprint** | Le sous-ensemble que l'équipe s'engage à livrer dans le sprint en cours |
+| **Incrément** | Le produit qui fonctionne à la fin du sprint — pas une maquette, pas une démo truquée |
+
+### Les événements
+
+Un **sprint** est une itération de durée fixe. Dans ce cours, vous en ferez
+trois. Chaque sprint contient quatre rendez-vous :
+
+| Événement | Quand | Durée | But |
+|---|---|---|---|
+| **[Planification](https://www.atlassian.com/fr/agile/scrum/sprint-planning)** | Au début du sprint | 1 à 2 h | Choisir les récits du sprint et les découper en tâches |
+| **[Mêlée quotidienne](https://www.atlassian.com/fr/agile/scrum/standups)** | Chaque bloc de cours | 10 à 15 min | Se synchroniser, nommer les blocages |
+| **[Revue](https://www.atlassian.com/fr/agile/scrum/sprint-reviews)** | À la fin du sprint | 30 à 60 min | Montrer l'incrément au client, recueillir sa réaction |
+| **[Rétrospective](https://www.atlassian.com/fr/agile/scrum/retrospectives)** | Après la revue | 30 min | Améliorer la **façon de travailler** de l'équipe |
+
+:::tip[Revue et rétrospective ne sont pas la même chose]
+
+La **revue** porte sur le **produit** : « voici ce qu'on a construit, qu'en
+pensez-vous ? ». Elle se fait avec le client.
+
+La **rétrospective** porte sur l'**équipe** : « qu'est-ce qui nous a ralentis,
+qu'est-ce qu'on change au prochain sprint ? ». Elle se fait entre vous.
+
+:::
+
+---
+
+## La mêlée quotidienne, concrètement
+
+Au début de chaque bloc de cours (10 minutes). Chacun répond à trois
+questions :
+
+1. Qu'est-ce que j'ai terminé depuis la dernière fois ?
+2. Sur quoi je travaille maintenant ?
+3. Qu'est-ce qui me bloque ?
+
+Ce n'est **pas** un rapport au professeur, ni une réunion de résolution de
+problèmes. Si un blocage demande une discussion, on la tient après, avec les
+deux ou trois personnes concernées.
+
+**Exemple, équipe Sillon, bloc 4 :**
+
+> **Amélie** — Hier j'ai fini l'écran d'ajout d'un disque. Aujourd'hui je
+> commence la validation des champs. Rien ne me bloque.
+>
+> **Bruno** — J'ai commencé l'import CSV. Je bloque : les fichiers exportés
+> utilisent des séparateurs différents selon la source, et je ne sais pas
+> lesquels supporter. J'ai besoin d'une décision.
+>
+> **Chan** — J'ai terminé la recherche par artiste, elle est en revue. Je prends
+> la recherche par titre ensuite.
+
+Le blocage de Bruno est une question de **portée**, pas de technique : c'est une
+décision de *Product Owner*, donc une décision d'équipe. Elle ne se tranche pas
+pendant la mêlée — on la note, on en discute juste après avec les personnes
+concernées, et la réponse va dans les critères d'acceptation du récit. C'est
+exactement le genre de chose que la mêlée sert à faire remonter **le jour même**
+plutôt qu'une semaine plus tard.
+
+---
+
+## Le vocabulaire, français et anglais
+
+Vous croiserez les deux. La documentation en ligne est majoritairement en
+anglais.
+
+| Français | Anglais |
+|---|---|
+| Backlog produit, carnet de produit | *Product backlog* |
+| Récit utilisateur | *User story* |
+| Épique | *Epic* |
+| Critères d'acceptation | *Acceptance criteria* |
+| Point de récit | *Story point* |
+| Définition de « terminé » | *Definition of Done* (DoD) |
+| Mêlée quotidienne | *Daily scrum*, *stand-up* |
+| Revue de sprint | *Sprint review* |
+| Rétrospective | *Retrospective*, *retro* |
+| Vélocité | *Velocity* |
+| Incrément | *Increment* |

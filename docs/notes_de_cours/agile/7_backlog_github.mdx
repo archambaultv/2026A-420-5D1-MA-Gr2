@@ -1,0 +1,88 @@
+---
+sidebar_position: 7
+sidebar_label: Le backlog dans GitHub
+description: Mettre le backlog en pratique avec les tickets GitHub et GitHub Projects
+---
+
+# Le backlog dans GitHub
+
+Les pages précédentes décrivent une méthode. Il faut maintenant l'outiller.
+GitHub suffit : tout le projet vit au même endroit — le code, les récits, le
+backlog, les revues et l'intégration continue.
+
+---
+
+## Deux outils, deux rôles
+
+| Outil | Ce qu'il contient |
+|---|---|
+| [**Tickets** (*issues*)](https://docs.github.com/fr/issues/tracking-your-work-with-issues/about-issues) | Le **contenu** : un ticket = un récit, avec son contexte et ses critères d'acceptation |
+| [**Projects**](https://docs.github.com/fr/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) | Les **vues** : kanban, priorités, points, sprints |
+
+Un récit n'est écrit **qu'une fois**, dans son ticket. Le projet ne le recopie
+pas : il l'affiche, le classe et l'ordonne.
+
+---
+
+## Ce que votre backlog doit permettre
+
+C'est à vous de décider comment le structurer. Ce qui n'est pas négociable,
+c'est ce qu'il doit rendre possible — tout le reste de ces notes en dépend :
+
+- lire un récit avec son contexte et ses critères d'acceptation;
+- voir sa **priorité** et son **épique**;
+- voir son **estimation en points** et le **sprint** visé;
+- voir son **état d'avancement**, d'un coup d'œil, pendant la mêlée;
+- lire le backlog **dans l'ordre**, du prochain récit au plus lointain;
+- remonter d'un récit au **code** qui l'a réalisé.
+
+Projects offre plusieurs mécanismes pour arriver là — libellés, champs
+personnalisés, vues multiples, automatisations. La [documentation de
+GitHub](https://docs.github.com/fr/issues/planning-and-tracking-with-projects)
+est bonne, elle est en français, et vous découvrirez plus en essayant deux
+configurations qu'en appliquant une recette.
+
+
+---
+
+## Lier le code aux récits
+
+Un mécanisme mérite d'être signalé, parce qu'il est facile à manquer et qu'il
+porte le dernier point de la liste ci-dessus. Dans un message de commit ou dans
+la description d'une demande de tirage :
+
+```text
+Ajoute la normalisation des accents dans la recherche
+
+Closes #14
+```
+
+`Closes #14` ferme automatiquement le ticket 14 quand la demande de tirage est
+fusionnée. D'autres mots-clés fonctionnent : `Fixes`, `Resolves`. Pour seulement
+mentionner un ticket sans le fermer, écrivez simplement `#14`.
+
+:::tip[Pourquoi ce lien vaut la peine]
+
+La chaîne récit → demande de tirage → commits rend le travail **traçable dans
+les deux sens** : d'une ligne de code, on remonte au besoin qui l'a justifiée;
+d'un récit, on descend au code qui l'a réalisé. C'est ce qui permet de relire,
+de déboguer et de comprendre une décision trois semaines plus tard.
+
+Elle rend aussi le travail de chacun **visible**. Un travail qui ne laisse
+aucune trace dans le dépôt est un travail que personne ne peut constater.
+
+:::
+
+---
+
+## Deux compléments utiles
+
+- **Git.** Le travail en demandes de tirage suppose que les branches, les
+  fusions et les conflits ne vous effraient pas. Au besoin, le
+  [tutoriel Git du cours](https://archambaultv.github.io/git) reprend tout
+  depuis le début.
+- **Les diagrammes.** GitHub affiche nativement les diagrammes
+  [Mermaid](https://mermaid.js.org/intro/) écrits dans vos fichiers Markdown :
+  un bloc de code balisé ` ```mermaid ` devient une image dans le dépôt. C'est
+  la façon la plus simple de garder vos diagrammes d'architecture à jour, parce
+  qu'ils se modifient comme du texte et se relisent dans une demande de tirage.

@@ -1,0 +1,180 @@
+---
+sidebar_position: 4
+sidebar_label: Backlog et priorisation
+description: Ce qu'est le backlog produit, comment l'ordonner et le prioriser
+---
+
+# Backlog et priorisation
+
+## Le backlog produit
+
+Le [backlog produit](https://www.atlassian.com/fr/agile/scrum/backlogs) est la
+**liste ordonnée de tout ce que le produit pourrait faire**. C'est l'artefact
+central de Scrum : tout le travail de l'équipe en sort.
+
+Trois caractéristiques le définissent :
+
+1. **Il est ordonné.** Ce n'est pas une liste de souhaits en vrac : le premier
+   élément est celui qu'on ferait ensuite si on démarrait aujourd'hui.
+2. **Il est vivant.** On y ajoute, on en retire, on réordonne à chaque sprint.
+   Un backlog figé est un backlog mort.
+3. **Il est plus précis en haut qu'en bas.** Les récits du prochain sprint sont
+   détaillés et estimés; ceux de la fin de session peuvent rester une phrase.
+
+Pour la mise en pratique, voir
+[Le backlog dans GitHub](./7_backlog_github.mdx).
+
+### Une liste ordonnée, vue de deux façons
+
+Le backlog lui-même est une **liste verticale** : le haut, c'est ce qu'on fait
+ensuite; le bas, c'est ce qui attendra, ou n'arrivera jamais.
+
+```text
+   ↑  haut du backlog — le prochain travail, détaillé et estimé
+   1. Inscrire un disque
+   2. Consulter la liste de ses disques
+   3. Chercher par artiste ou titre
+   4. Modifier un disque
+   5. Supprimer un disque
+   6. Noter un prêt et son retour
+   7. Importer un CSV bien formé
+   8. Voir les prêts en retard
+   9. Filtrer par genre et par décennie
+  10. Faire correspondre les colonnes d'un CSV
+  11. Statistiques par décennie
+  12. Marquer des disques « à vendre »
+  13. Joindre une photo de pochette
+   ↓  bas du backlog — une phrase suffit pour l'instant
+```
+
+Cet ordre n'est pas arbitraire : il vient de la priorisation
+([MoSCoW](#priorisation--moscow)), puis des dépendances et du risque
+([plus bas](#ordonner-à-lintérieur-des-must)). Les récits écartés (*Won't*) ne
+sont nulle part dans cette liste : ils sont mis de côté, pas rangés en dernier.
+
+Une fois le sprint démarré, on regarde ce **même** backlog autrement : par
+**état d'avancement**, dans une **vue kanban**. Les colonnes ne sont pas
+un ordre de priorité — elles disent seulement où en est chaque récit. L'ordre
+du backlog, lui, survit dans la colonne « À faire », qui se lit **de haut en
+bas** : le récit du haut est le prochain à démarrer.
+
+```text
+┌──────────────────┬──────────────────┬──────────────────┬──────────────────┐
+│     À faire      │     En cours     │     En revue     │     Terminé      │
+├──────────────────┼──────────────────┼──────────────────┼──────────────────┤
+│ ↑ prochain       │                  │                  │                  │
+│ 7. Importer un   │ 6. Noter un prêt │ 3. Chercher par  │ 1. Inscrire un   │
+│    CSV           │    (Bruno)       │    artiste (Chan)│    disque        │
+│                  │                  │                  │                  │
+│ 8. Voir les prêts│                  │                  │ 2. Consulter la  │
+│    en retard     │                  │                  │    liste         │
+│                  │                  │                  │                  │
+│ 9. Filtrer par   │                  │                  │ 4. Modifier un   │
+│    genre         │                  │                  │    disque        │
+│                  │                  │                  │                  │
+│ ↓ plus tard      │                  │                  │ 5. Supprimer un  │
+│                  │                  │                  │    disque        │
+└──────────────────┴──────────────────┴──────────────────┴──────────────────┘
+```
+
+Deux règles simples et souvent violées :
+
+- **On tire par le haut.** On prend le récit du haut de « À faire », pas celui
+  qui nous tente. Si l'ordre ne vous convient plus, changez l'ordre — c'est une
+  décision d'équipe, pas un contournement silencieux.
+- **On limite le travail en cours.** Une équipe de quatre qui a huit récits
+  « en cours » ne finit rien. Terminez avant de commencer autre chose.
+
+---
+
+## Priorisation : MoSCoW
+
+[MoSCoW](https://fr.wikipedia.org/wiki/M%C3%A9thode_MoSCoW) répartit les récits
+en quatre catégories. Les majuscules forment l'acronyme; les « o » ne veulent
+rien dire.
+
+| Catégorie | Signification | Test |
+|---|---|---|
+| **Must** | Sans lui, le produit n'a pas de sens | Si on le retire, est-ce qu'on peut encore livrer ? Si non → *Must* |
+| **Should** | Important, mais on pourrait livrer sans | Douloureux à perdre, pas fatal |
+| **Could** | Agréable si le temps le permet | Le premier à sauter |
+| **Won't** | Explicitement écarté pour cette fois | Décidé, pas oublié |
+
+### Sillon, priorisé
+
+| Récit | Épique | MoSCoW |
+|---|---|---|
+| Inscrire un disque | Catalogue | Must |
+| Modifier un disque | Catalogue | Must |
+| Supprimer un disque | Catalogue | Must |
+| Consulter la liste de ses disques | Catalogue | Must |
+| Chercher par artiste ou titre | Recherche | Must |
+| Noter un prêt et son retour | Prêts | Must |
+| Importer un CSV bien formé | Import/export | Should |
+| Filtrer par genre et par décennie | Recherche | Should |
+| Voir les prêts en retard | Prêts | Should |
+| Faire correspondre les colonnes d'un CSV | Import/export | Could |
+| Statistiques par décennie | Statistiques | Could |
+| Marquer des disques « à vendre » | Catalogue | Could |
+| Joindre une photo de pochette | Catalogue | Could |
+| Synchroniser avec un service en ligne | Import/export | Won't |
+| Application mobile compagnon | — | Won't |
+
+:::tip[La colonne *Won't* n'est pas décorative]
+
+C'est la plus utile des quatre. Elle enregistre les idées que vous avez
+**décidé** d'écarter, avec la date. Sans elle, la même idée revient toutes les
+trois semaines et l'équipe la rediscute à chaque fois.
+
+Deux mois plus tard, quand quelqu'un proposera « et si on ajoutait la
+synchronisation en ligne ? », vous pourrez répondre « on a décidé que non en
+septembre, voici pourquoi » au lieu de rouvrir le débat.
+
+:::
+
+---
+
+## Ordonner à l'intérieur des *Must*
+
+MoSCoW donne quatre paquets, pas un ordre. À l'intérieur des *Must*, il faut
+encore décider quoi faire en premier. Deux critères suffisent :
+
+- **La dépendance.** « Chercher un disque » n'a aucun sens avant « inscrire un
+  disque ».
+- **Le risque.** Ce qui est incertain passe **tôt**, pas tard. Si une
+  fonctionnalité risque de ne pas marcher, vous voulez le savoir au sprint 1,
+  quand il reste du temps pour changer de plan — pas au sprint 3.
+
+Appliqués aux *Must* de Sillon, ces deux critères donnent l'ordre montré
+[au début de la page](#une-liste-ordonnée-vue-de-deux-façons) : « inscrire un
+disque » d'abord, parce que tout le reste en dépend; puis « consulter » et
+« chercher », qui rendent le catalogue utilisable; « modifier » et « supprimer »
+seulement ensuite, même s'ils appartiennent à la même épique.
+
+:::warning[L'erreur classique : garder le difficile pour la fin]
+
+C'est tentant : on commence par ce qu'on sait faire, ça avance vite, on se
+sent bien. Puis le sprint 3 arrive et on découvre que la partie centrale du
+projet ne fonctionne pas.
+
+Attaquez tôt ce que vous ne savez pas faire. Un échec à la semaine 5 est un
+ajustement de portée; le même échec à la semaine 13 est un projet raté.
+
+:::
+
+---
+
+## Le raffinement du backlog
+
+Le backlog n'est pas écrit une fois pour toutes. À chaque sprint, l'équipe
+prend une heure pour le **raffiner** (*backlog refinement*) :
+
+- découper les récits devenus trop gros;
+- ajouter des critères d'acceptation à ceux qui approchent;
+- réestimer ceux dont on comprend mieux la difficulté;
+- retirer ceux qui n'ont plus de sens;
+- réordonner selon ce qu'on a appris.
+
+C'est normal, et c'est même le point : votre backlog du début de session ne
+ressemblera pas à celui de la fin. Un bon backlog n'est pas un backlog
+définitif; c'est **un bon point de départ**, tenu à jour.

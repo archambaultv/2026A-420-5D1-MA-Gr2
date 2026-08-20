@@ -6,10 +6,634 @@ description: Énoncé de la soumission du projet
 
 # Soumission du projet
 
-- **Pondération** : 18%
+- **Pondération** : 18 %
+- **Remise** : jeudi 10 septembre 2026 à 23 h 59
 
-:::warning
+:::note[L'essentiel]
 
-Détails à venir.
+Trois rendez-vous structurent ces trois semaines :
+
+- **27 août** — votre sujet est approuvé au point de contrôle 1;
+- **10 septembre, 23 h 59** — remise : étiquette `soumission-v1` sur le dépôt,
+  URL du dépôt déposée sur LÉA;
+- **14 septembre** — rencontre de soumission de 20 minutes avec votre équipe.
+
+La [liste de vérification](#liste-de-vérification-avant-la-remise) en fin de
+page récapitule tout ce qui doit se trouver dans la remise.
+
+:::
+
+## But de la soumission
+
+Pendant les trois premières semaines, votre équipe fait le travail qu'une
+équipe de développement fait avant d'écrire la première ligne de code d'un
+projet : comprendre le problème, décider ce qu'on construit, en dessiner
+l'architecture, découper le travail et planifier les itérations.
+
+Dans le vocabulaire de [Scrum](https://www.atlassian.com/fr/agile/scrum), ces
+trois semaines sont votre **sprint 0**. Vous en sortez avec un
+[backlog produit](https://www.atlassian.com/fr/agile/scrum/backlogs) prêt à
+l'emploi et un plan pour les trois sprints de la session. Tout ce que vous produisez ici, vous allez le réutiliser
+directement : le sprint 1 commence en piochant dans le backlog que vous avez
+construit.
+
+Autrement dit, la soumission n'est pas un document à remettre puis à oublier.
+C'est l'outil de travail de votre équipe pour le reste de la session. Une
+soumission bâclée se paie pendant dix semaines.
+
+:::info[Si le vocabulaire agile est loin]
+
+Cet énoncé emploie sans les définir les mots *backlog*, récit utilisateur,
+critère d'acceptation, point de récit, définition de « terminé ». Ils sont tous
+expliqués, avec des exemples suivis, dans les
+**[notes de cours](../notes_de_cours/agile/1_introduction.mdx)**.
+
+Lisez au minimum
+[Agile et Scrum](../notes_de_cours/agile/2_agile_et_scrum.mdx),
+[Récits utilisateurs](../notes_de_cours/agile/3_recits_utilisateurs.mdx) et
+[Backlog et priorisation](../notes_de_cours/agile/4_backlog_et_priorisation.mdx)
+avant le point de contrôle 1. Vous perdrez sinon la moitié de vos trois semaines
+à vous demander ce qu'on vous demande.
+
+:::
+
+:::warning[Approbation du sujet]
+
+Aucune équipe ne commence le sprint 1 sans que j'aie approuvé son sujet. Si la
+soumission est jugée insuffisante, je peux exiger des correctifs avant de vous
+laisser démarrer. La note attribuée reste toutefois celle de la version remise
+le 10 septembre.
+
+:::
+
+---
+
+## Le projet à réaliser
+
+Vous choisissez votre sujet. En revanche, l'application doit servir de terrain
+d'application aux cours de la session : c'est la raison d'être du cours Projet 3.
+Votre projet est l'endroit où les notions du cours **420-5D2 Applications web 2**
+deviennent un vrai logiciel.
+
+### Contraintes techniques imposées
+
+Votre projet doit satisfaire **tous** les éléments suivants. Ce sont des
+exigences sur ce que l'application doit *être capable de faire*, pas sur les
+outils précis à employer : dans presque tous les cas, plusieurs technologies
+conviennent et le choix vous appartient.
+
+Certaines de ces notions vous sont déjà familières, d'autres non : plusieurs
+seront enseignées dans le cours Applications web 2 pendant la session. Vous
+n'avez donc pas à savoir les mettre en œuvre aujourd'hui pour les inscrire à
+votre plan — vous avez à savoir *où* elles entrent dans votre application et
+*à quoi* elles y servent.
+
+| # | Exigence |
+|---|---|
+| 1 | Une application web **client-serveur**, bâtie sur un **cadriciel *full stack*** capable de faire du rendu **côté serveur** et **côté client** |
+| 2 | Une **base de données transactionnelle** : elle doit vous permettre de traiter correctement des écritures simultanées |
+| 3 | L'application **s'installe et démarre à l'aide de Docker**, sans que j'aie à installer quoi que ce soit d'autre sur ma machine |
+| 4 | Au moins **deux rôles d'utilisateur** aux permissions réellement différentes, derrière une authentification |
+| 5 | Au moins une **fonctionnalité temps réel multi-utilisateurs** qui a du sens dans le projet |
+| 6 | Au moins un **point de concurrence réel** : deux personnes qui agissent en même temps sur la même ressource, et le résultat reste correct |
+| 7 | Des **tests automatisés exécutés automatiquement à chaque poussée** vers le dépôt |
+| 8 | La version finale est **déployée sur un serveur**, accessible autrement que depuis vos portables |
+
+Pour le point 8, les modalités de déploiement — serveur du département ou
+hébergeur externe — seront précisées en cours de session.
+
+Le point 5 mérite une précision : un clavardage greffé sur le côté ne compte
+pas. Le temps réel doit être une des raisons d'exister de votre application —
+tableau collaboratif, suivi d'une partie, salle d'attente,
+répartition de commandes, etc.
+
+:::tip[Choisir sa pile technologique]
+
+La liberté a un prix. Le cours Applications web 2 enseigne une pile précise, et
+c'est celle sur laquelle je pourrai vous dépanner le plus rapidement :
+
+| Exigence | Ce qui sera enseigné en Applications web 2 |
+|---|---|
+| Cadriciel *full stack* | [Node.js](https://nodejs.org/fr) avec [React](https://react.dev/) et [React Router v7](https://reactrouter.com/) en mode *framework* |
+| Base de données | [PostgreSQL](https://www.postgresql.org/) |
+| Conteneurisation | [Docker](https://docs.docker.com/get-started/) et Docker Compose |
+| Temps réel | [Socket.IO](https://socket.io/fr/) par-dessus les WebSockets |
+| Intégration continue | [GitHub Actions](https://docs.github.com/fr/actions) |
+| Mise en page | [Bulma](https://bulma.io/) |
+
+Rien ne vous oblige à retenir cette pile. Si votre équipe choisit autre chose —
+Next.js, Nuxt, SvelteKit, MariaDB, une autre bibliothèque temps réel — ce sera
+un choix parfaitement légitime, mais il doit être **justifié dans votre
+registre de décisions**, et vous assumerez une part plus grande de
+l'apprentissage. Décidez-en tôt, pas au sprint 2.
+
+:::
+
+
+**Optionnel** : votre équipe peut ajouter un client mobile, natif ou hybride,
+qui consomme la même API — c'est l'occasion d'exploiter aussi le cours
+**420-5D6 Applications hybrides et natives**.
+
+### Ce qui ne passera pas
+
+- Un CRUD à plat : des formulaires qui remplissent des tables, sans logique
+  métier ni interaction entre utilisateurs.
+- La reprise d'un tutoriel existant, ou un projet déjà réalisé dans un autre cours.
+- Un projet dont le cœur repose sur un service externe payant, ou sur une API
+  dont vous n'avez pas encore vérifié l'accès.
+- Un projet dont l'ampleur ne correspond pas à une dizaine de semaines de
+  développement pour une équipe de votre taille. Une équipe de trois vise
+  moins large qu'une équipe de quatre — c'est attendu, et c'est à vous d'en
+  tenir compte dès maintenant.
+
+---
+
+## Déroulement des trois semaines
+
+Vous disposez de **six blocs de cours** pour produire la soumission. Vous
+travaillez en classe, et je passe voir les équipes. Deux points de contrôle
+obligatoires ponctuent le parcours; ils ne sont pas notés directement, mais je
+m'attends à ce qu'ils soient faits, et l'objectif 5 en tient compte.
+
+| Bloc | Date | Ce qui se passe | Ce que vous apportez |
+|---|---|---|---|
+| 1 | **jeudi 20 août** | Présentation de l'énoncé, formation des équipes, exploration de sujets | — |
+| 2 | **lundi 24 août** | Travail en équipe; je passe discuter des sujets envisagés | Deux ou trois pistes de sujet |
+| 3 | **jeudi 27 août** | **Point de contrôle 1** — argumentaire de 5 minutes devant moi, puis approbation verbale du sujet | Le problème, les personnes utilisatrices, 5 récits phares, la fonctionnalité temps réel envisagée |
+| 4 | **lundi 31 août** | Travail en équipe : backlog et maquettes | — |
+| 5 | **jeudi 3 septembre** | **Point de contrôle 2** — revue de 10 minutes : je lis votre backlog et vos maquettes avec vous | Backlog en cours, maquettes des écrans principaux, premières décisions techniques |
+| — | *lundi 7 septembre* | *Congé de la fête du Travail — pas de cours* | — |
+| 6 | **jeudi 10 septembre** | Dernier bloc de travail; **remise à 23 h 59** | Étiquette `soumission-v1` posée sur le dépôt |
+| 7 | **lundi 14 septembre** | **Rencontre de soumission** (20 min par équipe) | Votre dépôt et votre backlog |
+
+:::warning[Le sujet doit être approuvé le 27 août]
+
+Sans approbation au point de contrôle 1, votre équipe ne peut pas avancer sur
+le backlog. Arrivez le 27 août avec un sujet défendable, pas avec une liste
+d'idées.
+
+:::
+
+---
+
+## La rencontre de soumission
+
+Le **lundi 14 septembre**, chaque équipe me rencontre pendant **20 minutes**.
+Ce n'est pas une présentation orale préparée : c'est une **discussion de
+travail**, sur le modèle d'une
+[revue de sprint](https://www.atlassian.com/fr/agile/scrum/sprint-reviews).
+
+- **5 minutes** — vous me faites visiter votre backlog et vos maquettes, et
+  vous me racontez ce que l'application fera.
+- **15 minutes** — je pose des questions. Sur n'importe quelle partie du
+  travail, à n'importe qui dans l'équipe.
+
+Tous les membres de l'équipe doivent être présents, et chacun doit être capable
+de parler de l'ensemble du projet, pas seulement de la section qu'il a
+rédigée. C'est
+notamment à ce moment que j'ajuste les notes individuelles.
+
+Attendez-vous à des questions comme : « Que se passe-t-il si deux personnes
+font cette action en même temps ? », « Pourquoi ce récit vaut-il 5 points et
+celui-là 2 ? », « Montrez-moi le récit qui est le plus à risque », « Qu'est-ce
+que vous abandonnez si vous prenez du retard ? ».
+
+Vous repartez de la rencontre en sachant si votre sujet est approuvé et ce que
+vous devez corriger avant le sprint 1.
+
+---
+
+## Ce que vous remettez
+
+Tout vit dans le **dépôt GitHub de votre équipe**, dont je suis ajouté comme
+collaborateur (username `archambaultv`). Les artefacts que vous produisez ici
+sont ceux que vous allez faire évoluer toute la session.
+
+Vous remettez deux choses : les **documents**, dont la structure est ci-dessous,
+et le **backlog**, qui ne vit pas dans un fichier mais dans les tickets et le
+projet GitHub — voir la
+[section 2](#2-backlog-produit--les-tickets-et-02-backlogmd).
+
+### Structure du dépôt
+
+```text
+README.md                    # porte d'entrée : nom du projet, résumé en 3 phrases,
+                             # équipe, liens vers le backlog et vers les documents
+docs/
+  01-vision.md               # le problème, les personnes utilisatrices, la portée
+  02-backlog.md              # épiques, récits prioritaires ordonnés, démarche d'estimation
+  03-conception.md           # données, routes, maquettes, décisions techniques
+  04-sprints.md              # plan des trois sprints, capacité, ordre d'abandon
+  05-equipe.md               # rôles, rituels, définition de « terminé », conventions
+  06-risques.md              # trois à cinq risques et leur atténuation
+  journal.md                 # une entrée par bloc de cours
+  maquettes/                 # une image par maquette, nommée lisiblement
+```
+
+Ce que chaque fichier
+doit contenir est décrit en détail dans **[Contenu attendu](#contenu-attendu)** :
+[vision](#1-vision-et-portée--01-visionmd) ·
+[backlog](#2-backlog-produit--les-tickets-et-02-backlogmd) ·
+[conception](#3-conception-technique--03-conceptionmd) ·
+[sprints](#4-plan-des-trois-sprints--04-sprintsmd) ·
+[équipe](#5-organisation-de-léquipe--05-equipemd) ·
+[risques](#6-risques--06-risquesmd).
+
+### La remise elle-même
+
+À l'échéance, posez une étiquette Git `soumission-v1` sur `main` et publiez-la
+(`git tag -a soumission-v1 -m "Soumission" && git push origin soumission-v1`).
+Je corrige l'état du dépôt **à cette étiquette** — vous pouvez donc continuer à
+travailler après sans brouiller la correction.
+
+Une seule personne de l'équipe dépose sur LÉA **l'URL du dépôt**. Rien d'autre :
+le README y pointe vers le backlog et vers les documents.
+
+---
+
+## Contenu attendu
+
+Écrivez court et précis. Un long document de généralités vaut moins qu'un
+paragraphe qui tranche.
+
+### 1. Vision et portée — `01-vision.md`
+
+C'est le fichier que je lis en premier, et le seul qu'une personne extérieure à
+l'équipe pourrait lire seule. Il doit rendre votre projet compréhensible sans
+vous, et surtout en fixer les **limites** : c'est cette portée qu'on vous
+opposera en novembre, quand une bonne idée voudra s'ajouter.
+
+- **Le problème** : quelle situation votre application améliore, et pour qui.
+  Décrivez-la comme si je n'en avais jamais entendu parler.
+- **Les personnes utilisatrices** : 2 ou 3 profils, avec ce qu'ils viennent
+  chercher et les rôles applicatifs qui leur correspondent.
+- **La proposition en une phrase** : « *Nom* est une application web qui
+  permet à *qui* de *faire quoi*. »
+- **Dans la portée / hors portée** : deux listes. La seconde est la plus utile;
+  c'est elle qui vous protégera des dérives en cours de session.
+- **Respect des exigences techniques** : reprenez le tableau des huit exigences
+  et indiquez, pour chacune, la technologie que vous retenez et comment votre
+  projet la satisfait. En particulier, décrivez précisément la fonctionnalité
+  temps réel et le point de concurrence.
+
+### 2. Backlog produit — les tickets et `02-backlog.md`
+
+#### Où vit le backlog
+
+Le backlog vit dans les
+[**tickets GitHub**](https://docs.github.com/fr/issues/tracking-your-work-with-issues/about-issues)
+(*issues*) et un
+[**projet GitHub**](https://docs.github.com/fr/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+(*GitHub Projects*) :
+
+- un récit utilisateur = un ticket;
+- pour chaque récit, on peut lire sa **priorité MoSCoW**, son **épique**, son
+  **estimation en points** et le **sprint** visé;
+- le backlog se lit **dans l'ordre de priorité**, du prochain récit au plus
+  lointain;
+- l'**état d'avancement** de chaque récit est visible.
+
+C'est la **source unique de vérité** pour les récits. Les fichiers Markdown ne
+les recopient pas : ils y renvoient.
+
+#### Prioriser avec MoSCoW
+
+La priorisation se fait selon
+[MoSCoW](../notes_de_cours/agile/4_backlog_et_priorisation.mdx#priorisation--moscow) : *Must* (sans quoi
+le produit n'a pas de sens), *Should* (important mais reportable), *Could*
+(bonus), *Won't* (explicitement écarté pour cette session). La colonne *Won't*
+n'est pas décorative : c'est elle qui vous évitera de repartir dans tous les
+sens en novembre.
+
+#### Dans les tickets : les récits
+
+Le backlog contient **15 à 25
+[récits utilisateurs](https://www.atlassian.com/fr/agile/project-management/user-stories)**
+couvrant toute la vision.
+
+Chaque récit est formulé du point de vue de la personne qui utilise
+l'application, **sans solution technique** dans l'énoncé :
+
+> En tant que *rôle*, je veux *capacité* afin de *bénéfice*.
+
+Un bon récit respecte les critères
+[INVEST](https://en.wikipedia.org/wiki/INVEST_(mnemonic)) : indépendant,
+négociable, porteur de valeur, estimable, petit, testable. Relisez vos récits
+avec cette grille avant la remise; elle élimine la plupart des problèmes.
+
+Les **6 à 8 récits que vous visez pour le sprint 1** portent en plus, dans leur
+ticket, des
+[**critères d'acceptation**](https://www.atlassian.com/fr/work-management/project-management/acceptance-criteria)
+**vérifiables** : des conditions observables qui permettent de trancher, sans
+discussion, si le récit est terminé. Les autres récits `must` n'ont besoin que
+de leur titre et d'une phrase de contexte — vous les détaillerez au raffinement
+du backlog, avant les sprints 2 et 3.
+
+```text
+Récit : En tant qu'enchérisseur, je veux voir la mise la plus haute se mettre à
+        jour sans recharger la page, afin de réagir avant la fin de l'enchère.
+
+Critères d'acceptation
+- Quand un autre utilisateur place une mise, la nouvelle mise et son auteur
+  apparaissent chez moi en moins d'une seconde, sans rechargement.
+- Si ma connexion tombe puis revient, l'affichage se resynchronise sur l'état
+  réel du serveur.
+- Deux mises identiques envoyées au même instant : une seule est acceptée,
+  l'autre reçoit un refus explicite.
+```
+
+#### Dans le fichier : la photo du backlog
+
+Votre backlog GitHub ne s'arrêtera pas à la remise : dès le sprint 1, l'ordre
+changera, des récits s'ajouteront, d'autres tomberont. `02-backlog.md` est la
+**photo de ce backlog au moment de la remise** — celle que je corrige, et celle
+que vous relirez en décembre pour mesurer l'écart avec ce que vous avez
+réellement livré.
+
+Restez bref : la photo tient en trois éléments.
+
+- la liste des
+  [**épiques**](https://www.atlassian.com/fr/agile/project-management/epics)
+  (4 à 6), avec une phrase chacune, qui dit ce que l'épique couvre;
+- la **liste ordonnée des récits `must`** — une ligne par récit, dans l'ordre
+  où vous comptez les réaliser :
+
+  ```markdown
+  | # | Récit | Épique | Points | Sprint |
+  |---|---|---|---|---|
+  | 1 | Créer un compte et se connecter | Comptes | 5 | 1 |
+  | 2 | Publier une annonce avec photos | Annonces | 8 | 1 |
+  | 3 | Voir les mises se mettre à jour en direct | Enchères | 8 | 2 |
+  ```
+
+- un paragraphe sur votre **démarche d'estimation** : votre échelle, votre
+  récit de référence, comment vous vous êtes entendus en cas de désaccord — la
+  méthode est dans les notes de cours,
+  [Estimation](../notes_de_cours/agile/5_estimation.mdx).
+
+Ce fichier recoupe donc volontairement le backlog GitHub. C'est le but : l'un
+bouge, l'autre est figé par l'étiquette `soumission-v1`.
+
+### 3. Conception technique — `03-conception.md`
+
+Un backlog n'est qu'une liste de promesses tant que personne n'a vérifié
+qu'elles peuvent être tenues. Cette section est cette vérification : quelles
+données vous manipulez, par où passent les requêtes, à quoi ressemblent les
+écrans, et pourquoi vous avez tranché comme vous l'avez fait.
+
+On ne vous demande pas d'avoir raison — vos choix changeront. On vous demande
+d'avoir **décidé**, et de pouvoir l'expliquer.
+
+- **Modèle de données initial** : entités, attributs principaux, clés,
+  relations et cardinalités. Un
+  [diagramme entité-association](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
+  suffit.
+- **Principales routes** : les routes de pages et les points d'accès de l'API,
+  avec leur rôle en quelques mots. Identifiez les événements temps réel émis
+  et reçus.
+- **Maquettes** (dans `maquettes/`) : **4 à 5 écrans clés**, pas l'application
+  au complet. Choisissez ceux qui montrent le cœur du projet — dont
+  obligatoirement l'écran où se joue la fonctionnalité temps réel. Chaque
+  maquette est titrée, lisible, et annotée pour ce qu'on ne peut pas deviner
+  (contenu des menus, états d'erreur, ce qui change selon le rôle). Outil libre
+  (Figma, Moqups, Penpot, Excalidraw).
+- **Registre de décisions** : **3** choix techniques structurants, écrits noir
+  sur blanc. Pour chacun : la question qui se posait, les options que vous avez
+  envisagées, celle que vous retenez, la raison, et ce que ce choix vous fait
+  perdre — toute décision a un prix, et l'écrire évite de la rediscuter dans
+  trois semaines. Quelques phrases par décision suffisent.
+
+### 4. Plan des trois sprints — `04-sprints.md`
+
+Pour chaque sprint : un **objectif en une phrase**, la liste des récits prévus
+avec leur total en points, et l'**incrément démontrable** en fin de sprint. Ce
+que vous faites ici est une
+[planification de sprint](https://www.atlassian.com/fr/agile/scrum/sprint-planning)
+anticipée, en plus grossier — le détail sera revu au début de chaque sprint.
+
+Votre plan doit tenir compte d'une réalité simple : les notions techniques dont
+vous avez besoin ne sont pas toutes disponibles en même temps. Elles arrivent
+progressivement au fil de la session. Voici l'ordre dans lequel elles vous
+seront accessibles — servez-vous-en comme d'une carte pour répartir vos récits.
+
+| Sprint | Durée | Livrable | Notions disponibles à ce moment | Ce qu'il est réaliste d'y mettre |
+|---|---|---|---|---|
+| **1** | ~3 semaines | Alpha | Docker, base de données relationnelle, rendu côté serveur avec un cadriciel *full stack*, tests et intégration continue | Le socle : schéma de données, conteneurisation, 2 ou 3 parcours complets qui fonctionnent bout en bout, chaîne CI verte |
+| **2** | ~3 semaines | Beta | Authentification externe (OAuth 2 / OIDC), rôles et autorisations, programmation sécurisée, protocole WebSocket | Comptes, rôles et permissions réellement appliqués, première version de la fonctionnalité temps réel |
+| **3** | ~5 semaines | Version finale | Bibliothèques temps réel, présence et état partagé, gestion de la concurrence, déploiement | Temps réel complet, présence, traitement correct des accès simultanés, mise en ligne |
+
+Les dates exactes de chaque sprint sont dans
+l'[échéancier](../echeancier/semaine_01.mdx). Rien ne vous empêche d'aller plus
+vite en vous documentant vous-mêmes. Mais un plan qui entasse
+l'authentification et le temps réel dans le sprint 1 n'est pas ambitieux, il
+est irréaliste.
+
+Ajoutez enfin deux choses, courtes mais décisives :
+
+- votre **capacité** : combien d'heures-personne le sprint 1 représente, et
+  combien de points vous pensez pouvoir livrer. La méthode de calcul est dans
+  les notes de cours,
+  [Estimation](../notes_de_cours/agile/5_estimation.mdx#capacité-et-vélocité);
+- votre **ordre d'abandon** : si vous prenez du retard, quels récits sautent en
+  premier. Écrivez-le maintenant, pendant que vous êtes lucides — dans trois
+  semaines, fatigués et en retard, vous choisirez mal.
+
+Le découpage des récits en tâches, lui, n'est pas demandé ici : c'est le travail
+de la [planification du sprint 1](./2_sprint_1.mdx), qui aura lieu après
+l'approbation de votre sujet. Le faire maintenant, ce serait le refaire.
+
+### 5. Organisation de l'équipe — `05-equipe.md`
+
+Une équipe qui n'a pas écrit ses règles les improvise au pire moment : la
+veille d'une remise, quand une demande de tirage traîne depuis cinq jours et
+que personne ne sait qui devait la relire. Ce fichier fixe **maintenant, à
+froid**, la façon dont vous allez travailler ensemble pendant treize semaines.
+
+- **Rôles** : qui est
+  [responsable de la mêlée](https://www.atlassian.com/fr/agile/scrum/scrum-master)
+  (*Scrum Master*) pour chaque sprint — le rôle tourne. Votre équipe joue
+  elle-même le rôle de
+  [*Product Owner*](../notes_de_cours/agile/2_agile_et_scrum.mdx) : c'est vous
+  qui possédez le backlog et son ordre. Je joue le client : j'approuve le
+  sujet, j'assiste aux revues et je réagis à l'incrément.
+- **Rituels** : quand vous tenez la
+  [mêlée quotidienne](https://www.atlassian.com/fr/agile/scrum/standups), la
+  [planification](https://www.atlassian.com/fr/agile/scrum/sprint-planning), la
+  [revue](https://www.atlassian.com/fr/agile/scrum/sprint-reviews) et la
+  [rétrospective](https://www.atlassian.com/fr/agile/scrum/retrospectives), et
+  comment vous fonctionnez entre les blocs de cours.
+- **[Définition de « terminé »](https://www.agilealliance.org/glossary/definition-of-done/)**
+  (*Definition of Done*) : la vôtre, qui doit au minimum contenir ceci :
+  - le code est fusionné dans `main` par une demande de tirage revue par un coéquipier;
+  - l'intégration continue est verte;
+  - des tests automatisés couvrent le comportement ajouté;
+  - tous les critères d'acceptation du récit sont satisfaits;
+  - l'application démarre toujours avec Docker à partir d'un clone neuf.
+- **Conventions** : nommage des branches, format des messages de commit,
+  règles de revue de code.
+- **Journal de sprint 0** (`docs/journal.md`) : une entrée par bloc de cours —
+  date, présences, ce qui a avancé, ce qui bloque, décisions prises. Trois ou
+  quatre lignes suffisent.
+- **Contributions individuelles** : un tableau indiquant, pour chaque membre,
+  ce qu'il a produit pour la soumission, avec des liens vers les tickets et les
+  commits correspondants. Prenez tout de suite l'habitude de rattacher vos
+  commits et vos demandes de tirage à leur ticket (`Closes #14`, voir
+  [Le backlog dans GitHub](../notes_de_cours/agile/7_backlog_github.mdx)) : aux
+  sprints, c'est cette chaîne qui rendra l'apport de chacun vérifiable sans que
+  j'aie à vous le demander.
+
+### 6. Risques — `06-risques.md`
+
+Trois à cinq risques crédibles, propres à *votre* projet. Pour chacun : sa
+probabilité, son impact, le signal qui vous avertira qu'il se matérialise, et
+la mesure d'atténuation.
+
+« On pourrait manquer de temps » n'est pas un risque, c'est une banalité.
+« Aucun de nous n'a jamais fait de temps réel et le cœur de l'application en
+dépend; si une diffusion d'événement de bout en bout ne fonctionne pas au
+milieu du sprint 2, on bascule sur un rafraîchissement périodique » — ça, c'en
+est un.
+
+---
+
+## Liste de vérification avant la remise
+
+Parcourez cette liste en équipe au bloc 6, avant de poser l'étiquette. Elle ne
+remplace pas l'énoncé : elle vérifie seulement que rien n'a été oublié.
+
+**Le dépôt**
+
+- [ ] `archambaultv` est collaborateur du dépôt **et a accès au backlog** — un
+      projet GitHub a ses propres permissions, être collaborateur du dépôt ne
+      suffit pas.
+- [ ] La structure des fichiers est celle demandée, journal inclus.
+- [ ] Le README nomme le projet, le résume en trois phrases et pointe vers le
+      backlog et les documents.
+- [ ] L'étiquette `soumission-v1` est posée sur `main` et publiée.
+- [ ] L'URL du dépôt est déposée sur LÉA.
+
+**Le backlog**
+
+- [ ] 15 à 25 récits, un ticket chacun, ordonnés par priorité.
+- [ ] Priorité, épique, points et sprint visé lisibles pour chaque récit.
+- [ ] Les 6 à 8 récits visés pour le sprint 1 portent des critères
+      d'acceptation vérifiables.
+
+**Les documents**
+
+- [ ] `01-vision.md` — problème, personnes utilisatrices, portée (dans/hors),
+      tableau des huit exigences avec les technologies retenues.
+- [ ] `02-backlog.md` — épiques, liste ordonnée des `must`, démarche
+      d'estimation.
+- [ ] `03-conception.md` — modèle de données, routes
+      et événements temps réel, 3 décisions techniques.
+- [ ] `maquettes/` — 4 à 5 écrans clés, titrés et annotés, dont l'écran temps
+      réel.
+- [ ] `04-sprints.md` — objectif et incrément par sprint, capacité, ordre
+      d'abandon.
+- [ ] `05-equipe.md` — rôles, rituels, définition de « terminé », conventions,
+      contributions individuelles.
+- [ ] `06-risques.md` — 3 à 5 risques avec signal d'alerte et mesure
+      d'atténuation.
+- [ ] `journal.md` — une entrée par bloc de cours.
+
+---
+
+## Évaluation
+
+Cette évaluation est notée selon le [barème du cours](./0_notation.mdx). Elle
+est découpée en cinq objectifs, notés séparément, puis combinés selon les poids
+ci-dessous.
+
+Rappelez-vous que les critères ne sont pas exhaustifs : ce que vous maîtrisez
+depuis les cours précédents reste attendu.
+
+### Objectif 1 — Vision et portée (15 %)
+
+Votre équipe a une vision commune, précise et réaliste de ce qu'elle va
+construire, et sait aussi ce qu'elle ne construira pas.
+
+- Le problème, les personnes utilisatrices et la valeur de l'application sont
+  énoncés concrètement; je comprends le projet sans connaissance préalable.
+- La portée est délimitée : les listes « dans la portée » et « hors portée »
+  sont explicites et cohérentes avec le reste du document.
+- Les huit exigences techniques sont satisfaites, la technologie retenue pour
+  chacune est nommée et le choix est cohérent avec le reste du projet. La
+  fonctionnalité temps réel et le point de concurrence sont intégrés au cœur du
+  projet, pas ajoutés par obligation.
+- L'ampleur du projet correspond à dix semaines de développement pour une
+  équipe de votre taille : ni un travail de fin de semaine, ni une ambition
+  intenable. Je tiens compte du nombre de membres — une équipe de trois n'est
+  pas pénalisée pour une portée plus modeste, mais elle doit l'assumer
+  explicitement plutôt que de promettre autant qu'une équipe de quatre.
+
+### Objectif 2 — Backlog produit (30 %)
+
+Votre backlog est un outil de travail prêt à alimenter le sprint 1, pas une
+liste de souhaits.
+
+- 15 à 25 récits couvrent l'ensemble de la vision, sans trou visible.
+- Les récits sont écrits du point de vue de la personne utilisatrice et
+  décrivent un besoin, pas une solution technique.
+- Les récits sont regroupés en épiques cohérentes.
+- Les récits visés pour le sprint 1 portent des critères d'acceptation
+  observables et non ambigus, incluant les cas d'erreur et les cas limites
+  lorsqu'ils comptent.
+- La priorisation MoSCoW est faite et défendable; l'estimation en points est
+  cohérente d'un récit à l'autre, et la démarche est expliquée.
+- Les récits sont découpés assez fin pour tenir dans un sprint.
+- Le backlog est réellement exploitable : priorité, épique, points, sprint et
+  ordre de priorité s'y lisent sans explication de votre part.
+
+### Objectif 3 — Conception technique (25 %)
+
+La conception montre que vous savez comment l'application sera construite, et
+qu'elle peut porter le backlog que vous avez écrit.
+
+- Le modèle de données est cohérent : entités, clés, relations et cardinalités
+  tiennent la route, et permettent de réaliser les récits `must`.
+- Les principales routes et les événements temps réel sont identifiés.
+- Les 4 à 5 maquettes portent sur les écrans les plus révélateurs du projet,
+  sont lisibles, titrées et annotées; l'interface qu'elles décrivent correspond
+  aux récits.
+- Les 3 décisions techniques sont documentées avec leurs solutions de rechange
+  et une justification qui va au-delà de « c'est ce qu'on connaît ».
+- L'ensemble se tient : chaque récit `must` trouve sa place dans l'architecture.
+
+### Objectif 4 — Plan des sprints et gestion des risques (20 %)
+
+Votre plan est exécutable, et vous avez anticipé ce qui peut mal tourner.
+
+- Chaque sprint a un objectif clair et un incrément démontrable au client.
+- La répartition des récits tient compte de la capacité de l'équipe et de
+  l'ordre dans lequel les notions techniques deviennent disponibles.
+- La capacité du sprint 1 est calculée, et le nombre de points visé s'y tient.
+- L'ordre d'abandon est défini.
+- Les 3 à 5 risques sont propres au projet, avec un signal d'alerte et une
+  mesure d'atténuation concrète — pas une bonne intention.
+
+### Objectif 5 — Processus d'équipe et traces de travail (10 %)
+
+L'équipe fonctionne déjà comme une équipe agile, et cela se voit.
+
+- Le dépôt respecte la structure demandée et l'étiquette `soumission-v1` est
+  posée à temps.
+- L'historique du dépôt montre une progression étalée sur les trois semaines,
+  avec des contributions de chacun des membres de l'équipe. Un dépôt rempli la
+  veille de la remise ne peut pas atteindre l'objectif.
+- Le journal documente chaque bloc de cours.
+- La définition de « terminé » est écrite, respecte le plancher exigé et reste
+  réaliste pour votre équipe.
+- Les rôles, les rituels et les conventions de travail sont définis.
+- Les deux points de contrôle ont eu lieu, et lors de la rencontre de
+  soumission chaque membre démontre une maîtrise de l'ensemble du projet.
+
+:::warning[Note individuelle]
+
+Même si le travail est fait en équipe, la note est individuelle. La rencontre
+de soumission, le journal, les contributions déclarées et l'historique du dépôt
+me servent à évaluer l'apport de chaque personne. Un écart marqué entre ce
+qu'une équipe remet et ce qu'un de ses membres est capable d'en expliquer se
+traduit par un écart de note.
 
 :::

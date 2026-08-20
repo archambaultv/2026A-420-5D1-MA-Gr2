@@ -100,6 +100,12 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'classNotes',
+            position: 'left',
+            label: 'Notes de cours',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'evaluations',
             position: 'left',
             label: 'Évaluations',

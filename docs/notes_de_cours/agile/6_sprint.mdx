@@ -1,0 +1,233 @@
+---
+sidebar_position: 6
+sidebar_label: Le sprint
+description: Planification, découpage en tâches, rituels et définition de « terminé »
+---
+
+# Le sprint
+
+Les pages précédentes vous ont donné le matériel : des récits, un backlog
+ordonné, des estimations. Cette page les met en mouvement. Le sprint est la
+boucle qui transforme un backlog en logiciel qui fonctionne, puis recommence.
+
+On la suit ici du début à la fin, en accompagnant l'équipe Sillon pendant son
+sprint 1 : elle fixe un but, planifie, s'entend sur ce que « terminé » veut
+dire, travaille, montre le résultat, puis en tire une leçon pour le sprint
+suivant.
+
+---
+
+## Ce qu'est un sprint
+
+Un sprint est une itération de **durée fixe** au bout de laquelle l'équipe
+livre un **incrément qui fonctionne**. La durée ne bouge jamais : si le travail
+ne rentre pas, on retire du travail, on ne rallonge pas le sprint.
+
+C'est ce qui rend l'agilité prévisible. Une équipe qui repousse la fin de son
+sprint n'apprend jamais à estimer.
+
+Dans ce cours : trois sprints, livrant respectivement une version **alpha**,
+**beta** et **finale**.
+
+La durée étant figée, la seule variable qui reste est le **contenu**. Tout le
+reste de la page découle de là : choisir ce contenu, le protéger, et savoir
+quand il est vraiment livré.
+
+---
+
+## L'objectif de sprint
+
+Avant de choisir des récits, l'équipe décide **où elle va**. Chaque sprint a un
+**objectif en une phrase** — pas une liste de récits, une phrase. Elle dit ce
+que le sprint rend possible.
+
+| Sprint | Objectif de Sillon |
+|---|---|
+| 1 | *Un collectionneur peut inscrire sa collection et la retrouver.* |
+| 2 | *Un collectionneur peut suivre ses prêts et importer une collection existante.* |
+| 3 | *Un collectionneur peut analyser sa collection et préparer une vente.* |
+
+L'objectif sert d'arbitre. En cours de sprint, quand il faut choisir entre deux
+récits, on garde celui qui sert l'objectif. Et si tout dérape, on peut sacrifier
+des récits sans sacrifier le sprint, tant que l'objectif tient.
+
+C'est le bon moment pour écrire votre **ordre d'abandon** : la liste, décidée
+*avant* de commencer, des récits qui sauteront en premier si vous prenez du
+retard. Une équipe fatiguée à trois jours de la revue prend de mauvaises
+décisions; une équipe qui a déjà décidé n'a qu'à appliquer.
+
+---
+
+## La planification
+
+L'objectif dit où on va; la planification décide **comment on y arrive**. Au
+début du sprint, l'équipe se réunit une à deux heures pour répondre à deux
+questions :
+
+1. **Quoi** — quels récits du haut du backlog prend-on ?
+2. **Comment** — en quelles tâches se découpent-ils ?
+
+La première question se règle vite, parce que le travail est déjà fait : le
+backlog est ordonné et estimé, et la capacité de l'équipe est connue (voir
+[Estimation](./5_estimation.mdx)). On descend la liste jusqu'à remplir la
+capacité, en vérifiant que ce qu'on prend sert bien l'objectif.
+
+La seconde question est celle qui occupe la réunion.
+
+### Découper un récit en tâches
+
+Un **récit** est un besoin de l'utilisateur. Une **tâche** est un morceau de
+travail pour un développeur. Un récit se découpe en tâches; les tâches ne sont
+pas estimées en points, mais en heures, et elles ont un responsable.
+
+Reprenons un récit du sprint 1 de Sillon :
+
+> **Récit** — En tant que collectionneur, je veux chercher un disque par artiste
+> ou par titre afin de le retrouver sans fouiller mes bacs. **(5 points)**
+
+| Tâche | Responsable | Estimation |
+|---|---|---|
+| Ajouter un index sur artiste et titre | Bruno | 1 h |
+| Écrire la fonction de normalisation (casse, accents) | Bruno | 2 h |
+| Écrire les tests de la recherche, cas limites inclus | Chan | 3 h |
+| Champ de recherche et rafraîchissement pendant la frappe | Amélie | 4 h |
+| Message « aucun résultat » | Amélie | 1 h |
+| Revue de code et fusion | Chan | 1 h |
+
+Voilà la différence entre les deux niveaux : le récit intéresse le client, les
+tâches n'intéressent que l'équipe.
+
+:::tip[N'oubliez pas les tâches invisibles]
+
+Les tests, la revue de code, la migration de base de données, la mise à jour de
+la documentation : ce sont des tâches, elles prennent du temps, et elles font
+partie du récit. Une équipe qui ne les inscrit pas les découvre en retard.
+
+:::
+
+Remarquez la dernière ligne du tableau : « revue de code et fusion ». Elle est
+là parce que, pour cette équipe, un récit n'est pas fini tant que son code n'est
+pas fusionné. C'est une règle qu'elle a écrite une fois pour toutes — et c'est
+l'objet de la section suivante.
+
+---
+
+## La définition de « terminé »
+
+La [définition de « terminé »](https://www.agilealliance.org/glossary/definition-of-done/)
+(*Definition of Done*) est la liste des conditions qu'un récit doit satisfaire
+pour être considéré comme fini. Elle est **la même pour tous les récits** du
+projet, et l'équipe l'écrit **une fois**, avant le premier sprint, puis s'y
+tient.
+
+Son but est d'éliminer le « c'est fini à 90 % », qui n'existe pas.
+
+**Exemple, équipe Sillon :**
+
+> Un récit est terminé quand :
+> - le code est fusionné dans `main` par une demande de tirage revue par un
+>   coéquipier;
+> - l'intégration continue est verte;
+> - des tests automatisés couvrent le comportement ajouté, cas d'erreur inclus;
+> - tous les critères d'acceptation du récit sont satisfaits;
+> - l'application démarre à partir d'un clone neuf;
+> - la documentation utilisateur est à jour si le récit change l'interface.
+
+:::warning[« Terminé » et « critères d'acceptation », ce n'est pas pareil]
+
+Les **critères d'acceptation** sont propres à un récit : ils disent *ce que ce
+récit-là* doit faire.
+
+La **définition de « terminé »** est commune à tous les récits : elle dit
+*quelle qualité* on exige, quel que soit le récit.
+
+Un récit est fini quand il satisfait **les deux**.
+
+:::
+
+Le but est fixé, les récits sont choisis et découpés, la barre de qualité est
+posée. Le sprint peut commencer.
+
+---
+
+## Pendant le sprint
+
+Une fois la planification terminée, la vie de l'équipe tient en trois
+habitudes.
+
+- **La mêlée** à chaque bloc de cours, 10 minutes (voir
+  [La mêlée quotidienne](./2_agile_et_scrum.mdx#la-mêlée-quotidienne-concrètement)).
+  C'est là qu'on découvre qu'un récit dérape pendant qu'il est encore temps de
+  réagir.
+- **On tient le backlog à jour en temps réel.** Un backlog qu'on met à jour la
+  veille de la revue ne sert à rien : son intérêt est que n'importe qui,
+  n'importe quand, voie où en est l'équipe.
+- **On ne change pas l'objectif du sprint** en cours de route. On peut retirer
+  des récits — c'est à cela que sert l'ordre d'abandon — mais on ne remplace
+  pas le but.
+
+Ces trois habitudes ont le même rôle : faire en sorte que la fin du sprint
+n'apporte aucune surprise, ni à l'équipe, ni au client.
+
+---
+
+## La revue
+
+À la fin du sprint, l'équipe **montre l'incrément qui fonctionne** au client.
+C'est le moment de vérité : ce que le backlog annonce comme terminé doit
+exister à l'écran.
+
+- On démontre le **logiciel**, pas des diapositives.
+- On montre ce qui est **terminé** selon la définition de « terminé ». Ce qui
+  est à moitié fait n'est pas montré : c'est juste pas fini.
+- Le client réagit, pose des questions, change parfois d'idée. C'est normal et
+  c'est le but.
+- Le backlog est ajusté à la sortie.
+
+Dans ce cours, la revue est la démonstration au professeur à la fin de chaque
+sprint.
+
+La revue vient de juger le **produit**. Il reste à juger la **façon de
+travailler** — et cela se fait entre vous.
+
+---
+
+## La rétrospective
+
+Après la revue, **entre vous**, 30 minutes. Trois questions :
+
+1. Qu'est-ce qui a bien fonctionné et qu'on garde ?
+2. Qu'est-ce qui nous a ralentis ?
+3. **Quel changement précis on essaie au prochain sprint ?**
+
+La troisième est la seule qui compte. Une rétrospective qui se termine sans une
+action concrète, assignée à quelqu'un, est une séance de bavardage.
+
+**Exemple, équipe Sillon, fin du sprint 1 :**
+
+> **Ça a bien été** — le planning poker a évité deux gros malentendus.
+>
+> **Ça nous a ralentis** — trois demandes de tirage sont restées ouvertes cinq
+> jours; personne ne les relisait.
+>
+> **On change** — Chan relit les demandes de tirage au début de chaque bloc,
+> avant d'écrire du code. On revérifie à la prochaine rétrospective.
+
+C'est court, concret, vérifiable. C'est ce qu'on attend.
+
+---
+
+## La boucle se referme
+
+L'équipe Sillon ressort de son sprint 1 avec trois choses, et c'est exactement
+avec elles qu'elle entamera le sprint 2 :
+
+- un **incrément** qui fonctionne, montré et accepté;
+- un **backlog ajusté** par ce que la revue a appris, et une **vélocité réelle**
+  qui remplace enfin les suppositions;
+- un **changement de processus** décidé à la rétrospective.
+
+La planification du sprint 2 reprend donc à la première section de cette page,
+avec un nouvel objectif — mais avec une équipe qui en sait plus qu'il y a trois
+semaines. C'est tout ce que l'agilité promet : pas de deviner juste du premier
+coup, mais de se tromper moins à chaque tour.

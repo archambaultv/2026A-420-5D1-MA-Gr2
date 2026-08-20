@@ -1,0 +1,165 @@
+---
+sidebar_position: 3
+sidebar_label: Récits utilisateurs
+description: Écrire des récits utilisateurs, des épiques et des critères d'acceptation
+---
+
+# Récits utilisateurs
+
+## Ce qu'est un récit
+
+Un [récit utilisateur](https://www.atlassian.com/fr/agile/project-management/user-stories)
+(*user story*) décrit **un besoin, du point de vue de la personne qui utilise
+le logiciel**. Il ne décrit pas une solution technique.
+
+La pratique vient de Mike Cohn, dont la
+[page d'origine sur les récits](https://www.mountaingoatsoftware.com/agile/user-stories)
+reste la meilleure explication courte du sujet.
+
+Le format habituel :
+
+> **En tant que** *rôle*, **je veux** *capacité* **afin de** *bénéfice*.
+
+Les trois parties comptent :
+
+- *En tant que* — **qui** en a besoin. Si vous écrivez toujours « utilisateur »,
+  c'est souvent le signe que vous n'avez pas réfléchi à vos types d'usagers.
+- *Je veux* — **quoi**, exprimé comme un besoin.
+- *Afin de* — **pourquoi**. C'est la partie la plus utile et la plus souvent
+  bâclée. Si vous ne trouvez pas le bénéfice, le récit ne vaut peut-être rien.
+
+### Exemples tirés de Sillon
+
+> En tant que **collectionneur**, je veux **inscrire un disque dans mon
+> catalogue** afin de **garder une trace de ce que je possède**.
+
+> En tant que **collectionneur**, je veux **savoir à qui j'ai prêté un disque**
+> afin de **pouvoir le réclamer**.
+
+> En tant que **collectionneur pressé**, je veux **importer ma collection à
+> partir d'un fichier CSV** afin de **ne pas ressaisir 300 disques à la main**.
+
+> En tant que **vendeur occasionnel**, je veux **marquer des disques comme « à
+> vendre »** afin de **préparer ma caisse avant le marché aux puces**.
+
+Remarquez que le rôle change : *collectionneur*, *collectionneur pressé*,
+*vendeur occasionnel*. C'est la même personne, mais pas le même besoin.
+
+---
+
+## Ce qui n'est pas un récit
+
+| Formulation | Problème |
+|---|---|
+| « Créer la table `disques` » | C'est une **tâche technique**, pas un besoin. Elle appartient au découpage d'un récit. |
+| « En tant qu'utilisateur, je veux une base de données SQLite » | Personne ne « veut » une base de données. C'est une solution, pas un besoin. |
+| « Gérer les disques » | Trop vague. Que veut dire *gérer* ? Ajouter, modifier, supprimer, prêter ? C'est une **épique**. |
+| « L'application doit être rapide » | C'est une **exigence de qualité**. Elle se traduit en critères d'acceptation sur les récits concernés. |
+| « En tant qu'utilisateur, je veux que l'application fonctionne » | Ce n'est rien du tout. |
+
+---
+
+## Les épiques
+
+Une [épique](https://www.atlassian.com/fr/agile/project-management/epics) est un
+gros besoin qu'on découpe en plusieurs récits. Elle sert à **regrouper** le
+backlog pour qu'il reste lisible : sans épiques, une liste de 25 récits est une
+bouillie.
+
+**Les épiques de Sillon :**
+
+| Épique | Ce qu'elle couvre |
+|---|---|
+| **Catalogue** | Inscrire, modifier, supprimer et consulter des disques |
+| **Recherche** | Retrouver un disque par artiste, titre, genre, année |
+| **Prêts** | Suivre les disques prêtés et leur retour |
+| **Import et export** | Charger une collection existante, la ressortir |
+| **Statistiques** | Voir la forme de sa collection |
+
+Un récit appartient à **une seule** épique. Si vous hésitez entre deux, c'est
+souvent que le récit est trop gros.
+
+---
+
+## Les critères d'acceptation
+
+Les [critères d'acceptation](https://www.atlassian.com/fr/work-management/project-management/acceptance-criteria)
+répondent à une question : **comment saura-t-on que ce récit est terminé ?**
+
+Un bon critère est **observable** et **non ambigu**. Deux personnes qui le
+lisent doivent arriver à la même conclusion, sans discuter.
+
+### Un exemple complet
+
+> **Récit** — En tant que collectionneur, je veux chercher un disque par
+> artiste ou par titre afin de le retrouver sans fouiller mes bacs.
+>
+> **Critères d'acceptation**
+> - La recherche porte à la fois sur le nom de l'artiste et sur le titre de
+>   l'album.
+> - Elle est insensible à la casse et aux accents : « bjork » trouve « Björk ».
+> - Les résultats se rafraîchissent pendant la frappe, sans bouton à cliquer.
+> - Sur une collection de 1 000 disques, les résultats apparaissent en moins
+>   d'une demi-seconde.
+> - Quand rien ne correspond, un message l'indique explicitement au lieu
+>   d'afficher une liste vide.
+
+### Comparez
+
+| Critère faible | Pourquoi | Critère fort |
+|---|---|---|
+| « La recherche fonctionne bien » | Invérifiable | « La recherche est insensible aux accents » |
+| « L'interface est conviviale » | Question d'opinion | « Les résultats se rafraîchissent pendant la frappe » |
+| « Les erreurs sont gérées » | Quelles erreurs ? | « Un fichier CSV mal formé affiche le numéro de la ligne fautive et n'importe rien » |
+
+:::tip[Pensez aux cas d'erreur]
+
+La moitié du travail d'un développeur porte sur ce qui se passe quand ça tourne
+mal. Vos critères d'acceptation doivent le refléter : que fait l'application si
+le champ est vide, si le fichier est corrompu, si le disque existe déjà ?
+
+Écrire ces cas **maintenant** vous évitera de découvrir en plein sprint qu'un
+récit estimé à 2 points en valait 8.
+
+:::
+
+---
+
+## Relire ses récits avec INVEST
+
+[INVEST](https://en.wikipedia.org/wiki/INVEST_(mnemonic)) est une grille de
+relecture. Passez chaque récit au travers avant de l'estimer et de le
+planifier.
+
+| Lettre | Critère | Question à se poser |
+|---|---|---|
+| **I** | *Independent* | Peut-on le réaliser sans attendre un autre récit ? |
+| **N** | *Negotiable* | Décrit-il un besoin plutôt qu'une solution imposée ? |
+| **V** | *Valuable* | Quelqu'un y gagne-t-il quelque chose ? |
+| **E** | *Estimable* | En sait-on assez pour l'estimer ? |
+| **S** | *Small* | Tient-il dans un sprint, largement ? |
+| **T** | *Testable* | A-t-il des critères d'acceptation vérifiables ? |
+
+### Découper un récit trop gros
+
+Le récit « importer une collection depuis un fichier CSV » est trop gros : il
+cache la lecture du fichier, la correspondance des colonnes, la détection des
+doublons, la gestion des erreurs. On le découpe :
+
+- importer un CSV **bien formé** dont les colonnes portent les noms attendus;
+- **faire correspondre** manuellement les colonnes quand les noms diffèrent;
+- **signaler les lignes fautives** sans interrompre l'import;
+- **détecter les doublons** et proposer de les fusionner.
+
+Chacun de ces quatre récits a de la valeur tout seul, et le premier suffit à
+livrer quelque chose d'utile. C'est le bon découpage : **par tranche verticale
+de valeur**, pas par couche technique.
+
+:::warning[Ne découpez pas par couche technique]
+
+« Faire la base de données », puis « faire la logique », puis « faire
+l'interface » n'est **pas** un découpage en récits. Aucune des trois tranches ne
+livre quoi que ce soit d'utilisable. Chaque récit doit traverser toutes les
+couches et produire quelque chose que le client peut voir.
+
+:::

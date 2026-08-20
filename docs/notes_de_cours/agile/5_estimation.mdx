@@ -1,0 +1,148 @@
+---
+sidebar_position: 5
+sidebar_label: Estimation
+description: Points de récit, planning poker, capacité et vélocité
+---
+
+# Estimation
+
+## Pourquoi pas des heures
+
+Demandez à quatre personnes combien d'heures prend une tâche : vous obtiendrez
+quatre réponses, toutes fausses, et personne n'osera dire « je ne sais pas ».
+Les humains estiment très mal les durées absolues.
+
+En revanche, ils comparent bien. « Ce récit est à peu près deux fois plus gros
+que celui-là » est une phrase que tout le monde peut dire avec assurance.
+
+L'[estimation en points](https://www.atlassian.com/fr/agile/project-management/estimation)
+exploite cela : on n'estime pas une durée, on estime une **taille relative**.
+
+:::info[Un point n'est pas une heure]
+
+Un point mesure un mélange de volume de travail, de complexité et
+d'incertitude. Ne cherchez pas de table de conversion : « 1 point = 3 heures »
+détruit tout l'intérêt de la méthode, parce que vous recommencez à estimer des
+durées.
+
+:::
+
+---
+
+## L'échelle
+
+On utilise une suite de Fibonacci : **1, 2, 3, 5, 8, 13**. Les écarts
+grandissent parce que l'incertitude grandit : la différence entre 1 et 2 est
+réelle, celle entre 20 et 21 est imaginaire.
+
+| Points | Ce que ça veut dire |
+|---|---|
+| **1** | Trivial. Quelques lignes, aucun inconnu. |
+| **2** | Petit et bien compris. La référence. |
+| **3** | Un peu plus gros, ou un petit inconnu. |
+| **5** | Une vraie fonctionnalité, plusieurs morceaux. |
+| **8** | Gros. À découper si possible. |
+| **13** | Trop gros. **Découpez-le**, ce n'est pas négociable. |
+
+### Le récit de référence
+
+Choisissez un petit récit que toute l'équipe comprend et décrétez qu'il vaut
+**2 points**. Tout le reste s'estime par comparaison avec lui.
+
+Pour Sillon, la référence est :
+
+> **Supprimer un disque du catalogue = 2 points.**
+> Un bouton, une confirmation, une suppression en base, la liste se rafraîchit.
+
+À partir de là :
+
+| Récit | Points | Raisonnement |
+|---|---|---|
+| Modifier un disque | 3 | Comme supprimer, plus un formulaire et de la validation |
+| Chercher par artiste ou titre | 5 | Rafraîchissement pendant la frappe, accents, performance |
+| Noter un prêt et son retour | 5 | Nouvelle entité, deux écrans, un cas d'erreur |
+| Importer un CSV bien formé | 8 | Lecture de fichier, correspondance, beaucoup de cas d'erreur |
+| Joindre une photo de pochette | 3 | Choix de fichier, copie, affichage — bien compris |
+
+Remarquez que « importer un CSV » à 8 points est un signal : c'est ce récit
+qu'on a découpé en quatre à la page précédente.
+
+---
+
+## Le *planning poker*
+
+Le [planning poker](https://www.mountaingoatsoftware.com/agile/planning-poker)
+est la façon d'estimer **en équipe** sans que la première personne à parler
+influence les autres.
+
+1. Quelqu'un lit le récit à voix haute.
+2. On pose les questions de clarification.
+3. Chacun choisit une carte **en silence**.
+4. Tout le monde retourne sa carte **en même temps**.
+5. Si les estimations sont proches, on prend la plus élevée et on avance.
+6. Si elles divergent, **les extrêmes s'expliquent**, puis on recommence.
+
+:::tip[Les désaccords sont le but]
+
+Quand Amélie annonce 2 et Bruno annonce 8, ce n'est pas un problème
+d'estimation : c'est que **vous ne parlez pas du même récit**. Bruno a pensé
+aux fichiers mal formés, Amélie non.
+
+Cette discussion vaut plus que le chiffre qui en sort. C'est là qu'on découvre
+les critères d'acceptation manquants.
+
+:::
+
+Pas besoin de vraies cartes : chacun montre un nombre avec ses doigts, ou tape
+son chiffre dans le clavardage sans l'envoyer, et tout le monde envoie ensemble.
+
+---
+
+## Capacité et vélocité
+
+La **capacité** est le temps dont vous disposez réellement dans le sprint. La
+**vélocité** est le nombre de points que vous livrez effectivement par sprint.
+
+Vous ne connaissez pas encore votre vélocité — il faut un sprint terminé pour
+la mesurer. Pour le sprint 1, il faut donc l'estimer, et le faire prudemment.
+
+### Un calcul honnête pour le sprint 1
+
+| Élément | Calcul |
+|---|---|
+| Blocs de cours dans le sprint | 6 blocs × 3 h = 18 h |
+| Travail personnel | 3 h/semaine × 3 semaines = 9 h |
+| **Total par personne** | **27 h** |
+| Équipe de 4 | 108 heures-personne |
+| Moins les rituels, la coordination, les revues (~20 %) | ≈ **85 h de développement** |
+
+Ensuite, la partie qui fait mal : à ce stade, vous ne savez pas encore combien
+de points ça représente. **Prévoyez petit.** Une équipe qui termine son sprint
+en avance pioche le récit suivant; une équipe qui livre la moitié de ce qu'elle
+avait promis a raté son sprint.
+
+:::warning[Le biais d'optimisme]
+
+Toutes les équipes sur-engagent leur premier sprint. Toutes. Vous aussi.
+
+Le remède : au sprint 1, engagez-vous sur ce que vous croyez pouvoir faire,
+puis **retirez 30 %**. Vous mesurerez votre vraie vélocité à la fin, et les
+sprints 2 et 3 seront planifiés sur des données réelles au lieu d'espoirs.
+
+:::
+
+---
+
+## Ce qui fait une bonne estimation
+
+Estimer juste est impossible, et personne n'y arrive au premier essai. Une
+estimation *utile*, en revanche, se reconnaît à quatre choses :
+
+- une **échelle** et un **récit de référence** que toute l'équipe partage;
+- une estimation faite **en équipe**, pas chacun dans son coin;
+- de la **cohérence** : deux récits de difficulté semblable portent des
+  chiffres semblables;
+- la capacité d'**expliquer** pourquoi un récit vaut 5 et un autre 2.
+
+La dernière est la vraie mesure. Si personne dans l'équipe ne peut justifier un
+chiffre, c'est que le récit n'a pas été discuté — et le chiffre ne vaut rien.
