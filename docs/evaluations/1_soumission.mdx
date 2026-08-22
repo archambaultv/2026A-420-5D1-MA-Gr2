@@ -384,13 +384,26 @@ données vous manipulez, par où passent les requêtes, à quoi ressemblent les
 On ne vous demande pas d'avoir raison — vos choix changeront. On vous demande
 d'avoir **décidé**, et de pouvoir l'expliquer.
 
-- **Modèle de données initial** : entités, attributs principaux, clés,
-  relations et cardinalités. Un
+Concevez **à la profondeur de ce que vous allez construire** : ce qui sert au
+sprint 1 est précis, le reste est esquissé. C'est la même règle que pour le
+backlog, où seuls les récits du sprint 1 portent des critères d'acceptation.
+Une conception détaillée jusqu'au sprint 3 serait du travail perdu — vous la
+referez de toute façon.
+
+Ce fichier vit avec le projet : à chaque sprint, vous le corrigerez. Changer le
+modèle de données au sprint 2 n'est pas un échec; ne pas écrire pourquoi vous
+l'avez changé, oui.
+
+- **Modèle de données initial** : les entités du domaine, leurs attributs
+  principaux, leurs relations et leurs cardinalités. Un
   [diagramme entité-association](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
-  suffit.
-- **Principales routes** : les routes de pages et les points d'accès de l'API,
-  avec leur rôle en quelques mots. Identifiez les événements temps réel émis
-  et reçus.
+  suffit. Détaillez — clés, types, contraintes — uniquement ce que touchent les
+  récits du sprint 1; ailleurs, une entité et ses liens suffisent. C'est une
+  hypothèse de travail, pas un schéma final.
+- **Principales routes** : les routes de pages et les points d'accès de l'API
+  qui portent les récits du sprint 1, avec leur rôle en quelques mots; pour la
+  suite, nommez seulement les grandes familles. Identifiez les événements temps
+  réel que vous prévoyez d'émettre et de recevoir.
 - **Maquettes** (dans `maquettes/`) : **4 à 5 écrans clés**, pas l'application
   au complet. Choisissez ceux qui montrent le cœur du projet — dont
   obligatoirement l'écran où se joue la fonctionnalité temps réel. Chaque
@@ -590,15 +603,18 @@ liste de souhaits.
 La conception montre que vous savez comment l'application sera construite, et
 qu'elle peut porter le backlog que vous avez écrit.
 
-- Le modèle de données est cohérent : entités, clés, relations et cardinalités
-  tiennent la route, et permettent de réaliser les récits `must`.
-- Les principales routes et les événements temps réel sont identifiés.
+- Le modèle de données est cohérent : entités, relations et cardinalités
+  tiennent la route et portent les récits `must`. Le détail attendu suit
+  l'horizon : précis là où le sprint 1 travaille, esquissé ailleurs.
+- Les routes du sprint 1 et les événements temps réel envisagés sont
+  identifiés.
 - Les 4 à 5 maquettes portent sur les écrans les plus révélateurs du projet,
   sont lisibles, titrées et annotées; l'interface qu'elles décrivent correspond
   aux récits.
 - Les 3 décisions techniques sont documentées avec leurs solutions de rechange
   et une justification qui va au-delà de « c'est ce qu'on connaît ».
-- L'ensemble se tient : chaque récit `must` trouve sa place dans l'architecture.
+- L'ensemble se tient : aucun récit `must` ne se heurte à un trou évident de
+  la conception.
 
 ### Objectif 4 — Plan des sprints et gestion des risques (20 %)
 
