@@ -244,7 +244,8 @@ doit contenir est décrit en détail dans **[Contenu attendu](#contenu-attendu)*
 [conception](#3-conception-technique--03-conceptionmd) ·
 [sprints](#4-plan-des-trois-sprints--04-sprintsmd) ·
 [équipe](#5-organisation-de-léquipe--05-equipemd) ·
-[risques](#6-risques--06-risquesmd).
+[risques](#6-risques--06-risquesmd) ·
+[journal](#7-journal-de-bord--journalmd).
 
 :::tip[Un dépôt d'exemple]
 
@@ -255,7 +256,7 @@ configurés comme je les attends. C'est un **gabarit** : chaque fichier contient
 un ou deux exemples, pas une soumission complète.
 
 Servez-vous-en comme modèle de forme, pas de contenu — rappelez-vous que
-[Sillon n'est pas un sujet valide](../notes_de_cours/agile/1_introduction.mdx#sillon-nest-pas-un-projet-valide).
+[Sillon n'est pas un sujet valide](../notes_de_cours/agile/1_introduction.mdx#le-fil-rouge--sillon).
 
 :::
 
@@ -504,9 +505,8 @@ froid**, la façon dont vous allez travailler ensemble pendant treize semaines.
   - l'application démarre toujours avec Docker à partir d'un clone neuf.
 - **Conventions** : nommage des branches, format des messages de commit,
   règles de revue de code.
-- **Journal de sprint 0** (`docs/journal.md`) : une entrée par bloc de cours —
-  date, présences, ce qui a avancé, ce qui bloque, décisions prises. Trois ou
-  quatre lignes suffisent.
+- **Journal** : tenez `docs/journal.md` dès le premier bloc — voir
+  [Journal de bord](#7-journal-de-bord--journalmd).
 - **Contributions individuelles** : un tableau indiquant, pour chaque membre,
   ce qu'il a produit pour la soumission, avec des liens vers les tickets et les
   commits correspondants. Prenez tout de suite l'habitude de rattacher vos
@@ -526,6 +526,30 @@ la mesure d'atténuation.
 dépend; si une diffusion d'événement de bout en bout ne fonctionne pas au
 milieu du sprint 2, on bascule sur un rafraîchissement périodique » — ça, c'en
 est un.
+
+### 7. Journal de bord — `journal.md`
+
+Le journal est la mémoire de l'équipe. Il sert d'abord à vous : au bloc
+suivant, il vous rappelle où vous en étiez, ce que vous aviez décidé et
+pourquoi. Il me sert ensuite à voir comment le travail s'est réparti et étalé
+dans le temps — c'est une des traces qui alimentent la
+[note individuelle](#objectif-5--processus-déquipe-et-traces-de-travail-10-).
+
+Écrivez **une entrée par bloc de cours**, à la fin du bloc, pendant que les
+choses sont fraîches. *Trois ou quatre lignes suffisent*; chaque entrée contient :
+
+- la **date** du bloc;
+- les **présences** — qui était là, qui était absent;
+- **ce qui a avancé** depuis la dernière entrée, et par qui;
+- **ce qui bloque**, s'il y a lieu;
+- les **décisions prises**, avec la raison en quelques mots.
+
+Une décision notée ici vous évite de la reprendre trois fois. « On garde
+PostgreSQL plutôt que MongoDB : le modèle est relationnel » est plus utile dans
+six semaines que n'importe quel compte rendu détaillé.
+
+Ce fichier ne s'arrête pas à la soumission : vous le tenez toute la session, et
+il est réévalué à chaque sprint.
 
 ---
 
