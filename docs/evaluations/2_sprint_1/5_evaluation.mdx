@@ -1,0 +1,156 @@
+---
+sidebar_position: 5
+sidebar_label: Évaluation
+description: Les trois objectifs du sprint 1, avec les critères « Acquis » et « Avancé »
+---
+
+# Évaluation
+
+Cette évaluation est notée selon le [barème du cours](../0_notation.mdx). Elle
+est découpée en trois objectifs, notés séparément, puis combinés selon les
+poids ci-dessous.
+
+| Objectif | Poids |
+|---|---|
+| 1 — L'incrément alpha | 40 % |
+| 2 — Qualité du code, tests et intégration continue | 30 % |
+| 3 — Conduite du sprint et traces de travail | 30 % |
+
+Chaque objectif indique aussi **ce qui mène à « Avancé »**. Ce sont des
+exemples, pas une liste à cocher : une autre initiative qui va réellement plus
+loin, et qui est faite proprement, compte autant. Deux règles s'appliquent
+partout.
+
+- « Avancé » s'obtient **en plus** de « Acquis », jamais à la place. Une
+  application mobile qui accompagne une alpha dont Docker ne démarre pas ne
+  vaut rien.
+- Le **volume** ne compte pas. Un récit à moitié fini ne rapporte rien : il a
+  coûté du temps sans rien livrer. Mieux vaut en engager moins et les terminer.
+
+Rappelez-vous aussi que les critères ne sont pas exhaustifs : ce que vous
+maîtrisez depuis les cours précédents reste attendu.
+
+
+## Objectif 1 — L'incrément alpha (40 %)
+
+L'application existe, démarre partout, et ce qu'elle promet fonctionne.
+
+**Pour atteindre « Acquis »**
+
+- Sur une machine où seul Docker est installé, un clone neuf et **une** commande
+  du README démarrent l'application. J'arrête les conteneurs, je les relance :
+  les données sont toujours là.
+- Les [parcours](./1_version_alpha.mdx#récit-et-parcours) engagés
+  fonctionnent de bout en bout, et **chacun satisfait tous les critères
+  d'acceptation de son récit**, y compris les cas d'erreur : champ vide, valeur invalide, page
+  demandée sans être connecté.
+- Les comptes de démonstration du README permettent de parcourir l'application
+  dans chaque rôle, sans intervention de votre part.
+- Ce qui est simulé est annoncé **à l'écran et dans le README**, et aucun récit
+  qui repose sur une béquille n'est présenté comme terminé.
+- Les corrections demandées à la rencontre de soumission sont intégrées, ou leur
+  abandon est justifié dans `03-conception.md`.
+- L'écart entre l'engagement et le livré, s'il y en a un, suit l'**ordre
+  d'abandon** écrit avant le sprint; il n'est pas découvert à la revue.
+- À la revue, les parcours sont montrés et expliqués. Je choisis le membre qui
+  présente chaque partie, pas seulement celui qui l'a codée.
+
+**Pour aller vers « Avancé »**
+
+- L'expérience est conçue pour **le mobile et le bureau** : les écrans du
+  sprint 1 ont une disposition pensée pour un téléphone — navigation, formulaires
+  utilisables au pouce, rien qui déborde — et pas seulement un site qui
+  rétrécit. Les maquettes mobiles sont dans `docs/maquettes/`.
+- Ou bien un **client mobile compagnon**, natif ou hybride, issu du cours
+  420-5D6, consomme la même API que le web pour au moins un parcours complet
+  et démarre à partir du dépôt avec ses instructions.
+
+## Objectif 2 — Qualité du code, tests et intégration continue (30 %)
+
+Le code peut être repris par quelqu'un d'autre, et la chaîne de tests le
+protège.
+
+**Pour atteindre « Acquis »**
+
+- Les couches — pages, logique serveur, accès aux données — sont séparées, et le
+  nommage suit les conventions de `05-equipe.md` **d'un bout à l'autre du
+  dépôt** : on ne voit pas changer le style selon l'auteur ou l'outil.
+- Le dépôt ne traîne rien d'inutile : pas de fonction jamais appelée, pas de
+  dépendance jamais importée, pas de fichier laissé « au cas où », pas de
+  commentaire qui décrit du code qui n'existe plus.
+- Chaque récit terminé est couvert par au moins un test qui **devient rouge si
+  on casse son comportement**. Je vérifie en modifiant une ligne de votre
+  logique : si tout reste vert, le test ne teste rien.
+- Les tests s'exécutent à chaque poussée et la chaîne est verte à l'étiquette.
+  Rien n'a été fusionné avec une chaîne rouge.
+- Chaque demande de tirage est revue avant fusion par un coéquipier qui n'a pas
+  écrit le code, et la revue **laisse une trace lisible**. Approuver 400 lignes
+  sans un mot n'est pas une revue.
+- Les entrées sont validées côté serveur; aucun secret n'est dans le dépôt
+  (un `.env.example` documente la configuration); les mots de passe sont hachés.
+- Les acquis des cours précédents tiennent : pas d'injection SQL possible, pas
+  de trace de débogage laissée dans le code livré.
+
+**Pour aller vers « Avancé »**
+
+- Les tests existent à plusieurs niveaux : unitaires, intégration contre une
+  vraie base de données dans la CI, et au moins un test de bout en bout dans un
+  navigateur pour un parcours complet. Nous ne l'avons pas vu en classe :
+  l'outil habituel est [Playwright](https://playwright.dev/docs/intro), qui
+  pilote un vrai navigateur sans interface, et
+  [`playwright codegen`](https://playwright.dev/docs/codegen) écrit un premier
+  test à partir de vos clics.
+- La chaîne CI construit aussi l'image Docker et vérifie le formatage ou le
+  *linting*; la branche `main` est protégée et refuse la fusion tant que tout
+  n'est pas vert.
+- La gestion des erreurs est pensée : messages utiles à l'utilisateur, codes
+  HTTP corrects, journalisation exploitable côté serveur.
+
+## Objectif 3 — Conduite du sprint et traces de travail (30 %)
+
+L'équipe s'est engagée avec réalisme, a suivi son avancement, et le travail de
+chacun est visible et daté sans que j'aie à le demander.
+
+**Pour atteindre « Acquis »**
+
+- `04-sprints.md` porte un objectif de sprint en une phrase et l'engagement en
+  points, dans la capacité calculée à la soumission. La date du commit montre
+  qu'ils ont été écrits **au début** du sprint.
+- Chaque récit engagé a un responsable nommé, et **chaque membre de l'équipe est
+  responsable d'au moins un récit**.
+- Les changements d'état des tickets sont **étalés sur les trois semaines**, pas
+  groupés dans les jours qui précèdent la remise.
+- Le journal compte **une entrée par bloc de cours, commise le jour du bloc**.
+  Chaque entrée nomme des personnes, des numéros de tickets et des décisions
+  avec leur raison.
+- L'historique montre des commits de **chaque membre** répartis sur les trois
+  semaines, rattachés à leur ticket. Une contribution qui tient entière dans les
+  deux derniers jours n'est pas une participation au sprint.
+- Le tableau des contributions de `05-equipe.md` correspond à ce que dit
+  l'historique Git.
+- Les abandons ont suivi l'ordre d'abandon, ou l'écart est expliqué; le bilan
+  donne points engagés, points livrés et vélocité réelle.
+- La rétrospective a eu lieu et se conclut par un changement concret, assigné à
+  quelqu'un. Les deux points de contrôle ont eu lieu avec ce qui était demandé.
+- À la revue, chaque membre explique n'importe quelle partie du projet, pas
+  seulement la sienne.
+
+**Pour aller vers « Avancé »**
+
+- L'équipe s'est mesurée pendant le sprint — points restants par bloc, sous
+  forme de tableau ou de *burndown* — et cette mesure a mené à **une décision**
+  qu'on retrouve datée dans le journal.
+- Un récit qui a dérapé a été redécoupé ou renégocié **pendant** le sprint
+  plutôt que traîné jusqu'à la fin, et la trace de cette décision existe.
+- Vous avez été présent à tous les blocs de cours et vous avez poussé votre travail à chaque bloc.
+
+:::warning[Note individuelle]
+
+Même si le travail est fait en équipe, la note est individuelle. La revue de
+sprint, le journal, le tableau des contributions, l'historique Git et le
+formulaire d'appréciation entre coéquipiers me servent à évaluer l'apport de
+chaque personne. Un écart marqué entre ce qu'une équipe livre et ce qu'un de
+ses membres est capable d'en expliquer — ou d'en montrer dans l'historique —
+se traduit par un écart de note.
+
+:::

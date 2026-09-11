@@ -54,10 +54,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/archambaultv/2026A-420-5D1-MA-Gr2/tree/main/',
+          // Pas de `editUrl` : le lien « Modifier cette page » ne sert à
+          // personne ici, les étudiants ne modifient pas les énoncés.
         },
         blog: false,
         theme: {

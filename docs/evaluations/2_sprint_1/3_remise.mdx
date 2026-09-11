@@ -1,0 +1,100 @@
+---
+sidebar_position: 3
+sidebar_label: Ce que vous remettez
+description: Le dépôt à l'étiquette alpha-v1 — application, backlog, documents, journal
+---
+
+# Ce que vous remettez
+
+Tout vit dans le **dépôt GitHub de votre équipe**. Pas de rapport, pas de
+document de présentation : le code, le backlog et les documents de travail que
+vous tenez déjà depuis la soumission.
+
+## La remise elle-même
+
+À l'échéance, posez une étiquette Git `alpha-v1` sur `main` et publiez-la
+(`git tag -a alpha-v1 -m "Alpha" && git push origin alpha-v1`). Je corrige
+l'état du dépôt **à cette étiquette** — vous pouvez donc continuer à travailler
+après sans brouiller la correction.
+
+## L'application
+
+Ce qu'elle doit faire est décrit dans
+[Ce qu'est une version alpha](./1_version_alpha.mdx). Ajoutez au README ce qu'il
+faut pour que je puisse l'utiliser sans vous :
+
+- la commande Docker de démarrage et l'adresse à ouvrir;
+- la commande qui exécute les tests;
+- des **comptes de démonstration** — un par rôle, identifiants dans le
+  README — chargés automatiquement au démarrage, pour que je puisse me
+  connecter et parcourir l'application;
+- la liste de
+  [ce qui est simulé](./1_version_alpha.mdx#ce-qui-est-simulé-doit-se-voir)
+  dans l'alpha.
+
+## Le backlog de sprint — les tickets
+
+Le backlog se tient **en temps réel**, pas la veille de la remise. GitHub
+enregistre chaque changement d'état avec sa date; un backlog mis à jour d'un
+coup le 1<sup>er</sup> octobre au soir se voit.
+
+## Les documents
+
+La structure des documents reste comme celle de la soumission.
+
+```text
+README.md
+docs/
+  01-vision.md
+  02-backlog.md
+  03-conception.md
+  04-sprints.md
+  05-equipe.md
+  06-risques.md
+  journal.md
+  retrospectives/
+    sprint-1.md
+  maquettes/
+```
+
+- **`README.md`** — Ce qu'il doit contenir est décrit à
+  [L'application](#lapplication).
+- **`01-vision.md`** — Corrigé si la rencontre de soumission l'a demandé,
+  inchangé sinon.
+- **`02-backlog.md`** — Ne bouge pas : c'est la photo prise à la soumission. Le
+  backlog vivant, lui, est sur GitHub.
+- **`03-conception.md`** — Le modèle de données décrit ce qui est réellement
+  dans la base. Le registre de décisions s'allonge des choix faits pendant le
+  sprint : outil de migration, organisation des dossiers, stratégie de tests,
+  ce que vous voulez. Un changement par rapport à la soumission n'est pas un
+  échec; un changement sans raison écrite, oui.
+- **`04-sprints.md`** — La soumission n'en donnait qu'un plan grossier. Au bloc
+  du 14 septembre, après la rencontre de soumission, votre
+  [planification de sprint](../../notes_de_cours/agile/6_sprint.mdx#la-planification)
+  le remplace par votre engagement réel : l'objectif en une phrase, les récits
+  engagés avec leurs points, le total et votre capacité, l'ordre d'abandon, le
+  responsable de la mêlée. À la remise, la section se termine par un **bilan de
+  cinq lignes** : points engagés, points **livrés** — un récit à moitié fait
+  vaut zéro point —, vélocité réelle, récits abandonnés et pourquoi. C'est cette
+  vélocité qui servira à planifier le sprint 2.
+- **`05-equipe.md`** — Le tableau des **contributions individuelles** du sprint
+  1 : pour chaque membre, les récits dont il était responsable et ce qu'il a
+  réalisé ailleurs, avec les liens vers les demandes de tirage. Il doit
+  correspondre à l'historique Git. Si la définition de « terminé » a changé —
+  parce qu'elle s'est révélée irréaliste, par exemple — dites-le ici.
+- **`06-risques.md`** — Quels risques se sont matérialisés, lesquels ont
+  disparu, lesquels sont apparus.
+- **`journal.md`** — Une entrée par bloc de cours.
+- **`retrospectives/sprint-1.md`** — Les trois questions et le changement
+  décidé, avec son responsable.
+- **`maquettes/`** — Mises à jour si l'interface a changé de direction depuis la
+  soumission.
+
+:::tip[Le code de chacun doit être identifiable]
+
+- travaillez toujours depuis **votre propre compte** GitHub, jamais depuis la
+  session d'un coéquipier;
+- un travail qui ne laisse aucune trace dans le dépôt est un travail que je ne
+  peux pas constater.
+
+:::

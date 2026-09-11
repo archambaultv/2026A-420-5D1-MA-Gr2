@@ -1,0 +1,90 @@
+---
+sidebar_position: 2
+sidebar_label: Déroulement
+description: Les six blocs du sprint, les deux points de contrôle, la rétrospective et la revue
+---
+
+# Déroulement des trois semaines
+
+Vous disposez de **six blocs de cours**. À chaque bloc : la
+[mêlée](../../notes_de_cours/agile/2_agile_et_scrum.mdx#la-mêlée-quotidienne-concrètement)
+au début, dix minutes; l'entrée de
+[journal](../1_soumission.mdx#7-journal-de-bord--journalmd) à la fin. Les deux
+points de contrôle sont obligatoires; ils ne sont pas notés sur place, mais
+l'objectif 3 en tient compte.
+
+| Bloc | Date | Ce qui se passe | Ce que vous apportez |
+|---|---|---|---|
+| 1 | **lundi 14 septembre** | **Rencontre de soumission** (20 min par équipe), puis développement | — |
+| 2 | **jeudi 17 septembre** | Développement | — |
+| 3 | **lundi 21 septembre** | **Point de contrôle 1** — 10 minutes : suivi de votre méthode agile | Votre sprint engagé, vos rituels tenus, votre backlog et votre journal à jour |
+| 4 | **jeudi 24 septembre** | Développement | — |
+| 5 | **lundi 28 septembre** | **Point de contrôle 2** — 10 minutes : démonstration de l'état du dépôt | L'application démarre à partir d'un clone neuf, la chaîne CI tourne, **au moins un récit est terminé**, journal à jour |
+| 6 | **jeudi 1<sup>er</sup> octobre** | Dernier bloc de travail; **rétrospective** en fin de bloc; appréciation entre coéquipiers; **remise à 23 h 59** | Étiquette `alpha-v1` posée sur `main` |
+| — | *lundi 5 octobre* | *Élections provinciales — pas de cours* | — |
+| 7 | **jeudi 8 octobre** | **Revue de sprint** (20 min par équipe), puis début du sprint 2 | — |
+
+## Point de contrôle 1 — la méthode agile (21 septembre)
+
+Dix minutes à votre table. Je ne viens pas voir votre code, mais votre **façon
+de travailler**. Je regarde cinq choses.
+
+- **Le sprint est engagé** : l'objectif et les récits de `04-sprints.md` sont
+  confirmés ou ajustés après la rencontre du 14 septembre, le total en points
+  tient toujours dans votre capacité, et **chaque récit a un responsable**.
+- **La progression est visible** : chaque responsable pousse sa branche à chaque
+  bloc de cours, quitte à n'être qu'un commit de travail en cours (`WIP`).
+- **Les rituels tournent** : mêlée à chaque bloc de cours, un
+  [responsable de la mêlée](../../notes_de_cours/agile/2_agile_et_scrum.mdx#les-rôles)
+  désigné.
+- **Le backlog est vivant** : des tickets ont changé d'état depuis le 14, et
+  l'ordre de priorité correspond à ce que vous faites vraiment.
+- **Le journal est à jour**.
+
+
+## Point de contrôle 2 — l'application existe (28 septembre)
+
+Avant dernier bloc avant la remise, dix minutes à votre table :
+
+- on clone le dépôt sur une machine neuve, on lance la commande du README, on
+  ouvre le navigateur;
+- vous me montrez la **chaîne CI** : dernière exécution, ce qu'elle lance, si
+  elle est verte;
+- vous me montrez **un récit terminé** : ticket fermé par une demande de tirage
+  fusionnée, revue par un coéquipier, avec ses tests;
+- le backlog et le journal sont à jour.
+
+Si rien de cela n'existe le 28, l'alpha est compromise. Il vous restera un
+bloc de cours et trois jours : c'est le moment d'appliquer votre ordre
+d'abandon, pas de tout tenter.
+
+## La rétrospective (1<sup>er</sup> octobre)
+
+En fin de bloc, avant de poser l'étiquette, **entre vous**, trente minutes. Les
+trois questions sont dans les notes de cours,
+[La rétrospective](../../notes_de_cours/agile/6_sprint.mdx#la-rétrospective). Le
+compte rendu — dix lignes — va dans `docs/retrospectives/sprint-1.md` et se
+termine par **au moins un changement précis, assigné à quelqu'un**, que vous essaierez au
+sprint 2. Il peut y avoir plusieurs changements.
+
+Après la rétrospective, chaque personne remplit **individuellement** un court formulaire
+d'appréciation de ses coéquipiers. Confidentiel, lien sur LÉA, il compte parmi
+les traces qui alimentent la note individuelle.
+
+## La revue de sprint (8 octobre)
+
+Vingt minutes par équipe. Cette fois, l'objet de la discussion est le
+**logiciel** — voir [La
+revue](../../notes_de_cours/agile/6_sprint.mdx#la-revue).
+
+- **10 minutes** — démonstration de l'alpha. L'application tourne déjà quand
+  j'arrive, dans l'état de l'étiquette `alpha-v1`. Vous parcourez chaque récit
+  terminé comme l'utilisateur le ferait, puis le backlog : engagé, livré,
+  abandonné et pourquoi.
+- **10 minutes** — mes questions, sur n'importe quelle partie du travail, à
+  n'importe qui.
+
+Chacun doit pouvoir expliquer le code de l'équipe, pas seulement le sien :
+c'est notamment ici que j'ajuste les notes individuelles.
+
+

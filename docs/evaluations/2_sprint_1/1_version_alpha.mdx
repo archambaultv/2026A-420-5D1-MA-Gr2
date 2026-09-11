@@ -1,0 +1,65 @@
+---
+sidebar_position: 1
+sidebar_label: La version alpha
+description: Ce que votre application doit faire à l'étiquette alpha-v1
+---
+
+# Ce qu'est une version alpha
+
+À l'étiquette `alpha-v1`, votre application satisfait **tout** ceci :
+
+| # | Ce que je vérifie |
+|---|---|
+| 1 | Un clone neuf du dépôt, **une commande** documentée dans le README (typiquement `docker compose up`), et l'application est accessible dans un navigateur. Je n'installe rien d'autre que Docker. |
+| 2 | La base de données est créée automatiquement au démarrage — migrations ou script d'initialisation — et les données **survivent à un redémarrage** des conteneurs. |
+| 3 | **Les parcours que vous vous êtes engagés à livrer** fonctionnent de bout en bout : du navigateur au serveur, du serveur à la base de données, et retour. Chacun satisfait les critères d'acceptation de son récit. |
+| 4 | Des **tests automatisés** couvrent le comportement livré et s'exécutent **à chaque poussée** vers le dépôt; la chaîne est verte à l'étiquette. |
+| 5 | Ce qui n'est pas encore réel est **annoncé comme tel** — voir ci-dessous. |
+
+## Récit et parcours
+
+Les deux mots désignent la même chose vue de deux côtés. Un **récit** est la
+demande, telle qu'elle est écrite dans le backlog. Un **parcours** est ce même
+récit une fois livré : la suite d'actions qu'une personne enchaîne pour obtenir
+ce que le récit promet, du navigateur au serveur, du serveur à la base de
+données, et retour. On planifie des récits, on démontre des parcours.
+
+Un parcours est **complet** quand son récit est terminé au sens de votre
+[définition de « terminé »](../../notes_de_cours/agile/6_sprint.mdx#la-définition-de--terminé-).
+Par exemple créer un compte, se connecter et voir son tableau de bord vide;
+publier une annonce et la retrouver dans la liste; inscrire une équipe à un
+tournoi et la voir apparaître dans le classement. Des parcours de ce genre,
+solides, valent plus qu'une série d'écrans qui ne parlent pas à la base de
+données.
+
+Combien ? C'est votre planification qui le dit, pas moi : vous descendez le
+backlog jusqu'à remplir votre capacité. Je vérifie ce que vous vous êtes
+engagés à livrer.
+
+## Ce que je ne vérifie pas
+
+| # | Ce que je ne vérifie pas |
+|---|---|
+| 1 | **L'apparence.** Bulma — ou votre bibliothèque — avec sa mise en page par défaut suffit. Les maquettes servent de guide, pas de contrat pixel par pixel. |
+| 2 | **La sécurité d'une version finale.** Des comptes locaux avec mot de passe suffisent; l'authentification externe et les permissions fines viendront au sprint 2. Le mot de passe est haché dès l'alpha, par contre : ce n'est pas une notion du sprint 2, c'est un acquis des cours précédents. |
+| 3 | **Le temps réel.** Le sprint 3 s'en charge. Si vous voulez préparer le terrain, tant mieux, mais ce n'est pas attendu. |
+
+## Ce qui est simulé doit se voir
+
+Une alpha tient debout avec des béquilles, et c'est normal. Un service externe
+remplacé par un faux, une liste alimentée par des données de départ plutôt que
+par un vrai calcul, un écran qui affiche une valeur en dur en attendant le
+récit qui la produira : tout cela est **permis**, et parfois c'est la bonne
+décision. Ce qui ne l'est pas, c'est que je le découvre en cliquant.
+
+Chaque béquille est donc déclarée à **deux endroits** :
+
+- **À l'écran, là où elle se trouve.** Une mention visible dans l'interface :
+  une étiquette « données de démonstration » au-dessus de la liste, un
+  « à venir » sur le bouton, un bandeau sur l'écran concerné. La personne qui
+  utilise l'application doit le savoir sans lire votre code.
+- **Dans le README, en une liste.** Une courte section « Ce qui est simulé dans
+  l'alpha » : une ligne par béquille, avec ce qui la remplacera et à quel
+  sprint.
+
+

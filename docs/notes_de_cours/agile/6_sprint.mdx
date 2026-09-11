@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 sidebar_label: Le sprint
-description: Planification, découpage en tâches, rituels et définition de « terminé »
+description: Planification, responsabilité des récits, rituels et définition de « terminé »
 ---
 
 # Le sprint
@@ -14,8 +14,6 @@ On la suit ici du début à la fin, en accompagnant l'équipe Sillon pendant son
 sprint 1 : elle fixe un but, planifie, s'entend sur ce que « terminé » veut
 dire, travaille, montre le résultat, puis en tire une leçon pour le sprint
 suivant.
-
----
 
 ## Ce qu'est un sprint
 
@@ -32,8 +30,6 @@ Dans ce cours : trois sprints, livrant respectivement une version **alpha**,
 La durée étant figée, la seule variable qui reste est le **contenu**. Tout le
 reste de la page découle de là : choisir ce contenu, le protéger, et savoir
 quand il est vraiment livré.
-
----
 
 ## L'objectif de sprint
 
@@ -56,8 +52,6 @@ C'est le bon moment pour écrire votre **ordre d'abandon** : la liste, décidée
 retard. Une équipe fatiguée à trois jours de la revue prend de mauvaises
 décisions; une équipe qui a déjà décidé n'a qu'à appliquer.
 
----
-
 ## La planification
 
 L'objectif dit où on va; la planification décide **comment on y arrive**. Au
@@ -65,7 +59,7 @@ début du sprint, l'équipe se réunit une à deux heures pour répondre à deux
 questions :
 
 1. **Quoi** — quels récits du haut du backlog prend-on ?
-2. **Comment** — en quelles tâches se découpent-ils ?
+2. **Qui** — qui devient responsable de chacun ?
 
 La première question se règle vite, parce que le travail est déjà fait : le
 backlog est ordonné et estimé, et la capacité de l'équipe est connue (voir
@@ -74,43 +68,47 @@ capacité, en vérifiant que ce qu'on prend sert bien l'objectif.
 
 La seconde question est celle qui occupe la réunion.
 
-### Découper un récit en tâches
+### Un récit, un responsable
 
 Un **récit** est un besoin de l'utilisateur. Une **tâche** est un morceau de
-travail pour un développeur. Un récit se découpe en tâches; les tâches ne sont
-pas estimées en points, mais en heures, et elles ont un responsable.
+travail pour un développeur. Un récit se découpe donc en tâches — mais ce
+découpage appartient à la personne qui prend le récit, et à elle seule. Le
+[Guide Scrum](https://scrumguides.org/scrum-guide.html) est explicite : la
+façon de transformer un récit en incrément est laissée à la discrétion des
+développeurs, et personne ne leur dicte la méthode. Rien n'oblige non plus à
+estimer ces tâches en heures.
 
-Reprenons un récit du sprint 1 de Sillon :
+Ce que la planification fixe, c'est donc **qui prend quoi**. Reprenons un récit
+du sprint 1 de Sillon :
 
 > **Récit** — En tant que collectionneur, je veux chercher un disque par artiste
 > ou par titre afin de le retrouver sans fouiller mes bacs. **(5 points)**
 
-| Tâche | Responsable | Estimation |
-|---|---|---|
-| Ajouter un index sur artiste et titre | Bruno | 1 h |
-| Écrire la fonction de normalisation (casse, accents) | Bruno | 2 h |
-| Écrire les tests de la recherche, cas limites inclus | Chan | 3 h |
-| Champ de recherche et rafraîchissement pendant la frappe | Amélie | 4 h |
-| Message « aucun résultat » | Amélie | 1 h |
-| Revue de code et fusion | Chan | 1 h |
+Chan le prend. Elle s'organise comme elle l'entend, et sa liste ressemblera
+sans doute à ceci :
 
-Voilà la différence entre les deux niveaux : le récit intéresse le client, les
-tâches n'intéressent que l'équipe.
+- ajouter un index sur artiste et titre;
+- écrire la fonction de normalisation (casse, accents);
+- écrire les tests de la recherche, cas limites inclus;
+- faire le champ de recherche et le rafraîchissement pendant la frappe;
+- afficher un message « aucun résultat »;
+- faire relire et fusionner.
 
-:::tip[N'oubliez pas les tâches invisibles]
+Cette liste est la sienne. Elle peut vivre dans le ticket, dans un carnet ou
+dans sa tête : ce qui compte, c'est que Chan n'oublie rien et que l'équipe
+puisse voir où elle en est.
+
+:::tip[N'oubliez pas le travail invisible]
 
 Les tests, la revue de code, la migration de base de données, la mise à jour de
-la documentation : ce sont des tâches, elles prennent du temps, et elles font
-partie du récit. Une équipe qui ne les inscrit pas les découvre en retard.
+la documentation : ça prend du temps et ça fait partie du récit. Celui qui ne
+le compte pas le découvre en retard.
 
 :::
 
-Remarquez la dernière ligne du tableau : « revue de code et fusion ». Elle est
-là parce que, pour cette équipe, un récit n'est pas fini tant que son code n'est
-pas fusionné. C'est une règle qu'elle a écrite une fois pour toutes — et c'est
-l'objet de la section suivante.
-
----
+Remarquez la dernière ligne : « faire relire et fusionner ». Elle est là parce
+que, pour cette équipe, un récit n'est pas fini tant que son code n'est pas
+fusionné. C'est l'objet de la section suivante.
 
 ## La définition de « terminé »
 
@@ -120,7 +118,7 @@ pour être considéré comme fini. Elle est **la même pour tous les récits** d
 projet, et l'équipe l'écrit **une fois**, avant le premier sprint, puis s'y
 tient.
 
-Son but est d'éliminer le « c'est fini à 90 % », qui n'existe pas.
+Son but est d'éliminer le « c'est fini à 90 % », qui n'existe pas.
 
 **Exemple, équipe Sillon :**
 
@@ -145,10 +143,8 @@ Un récit est fini quand il satisfait **les deux**.
 
 :::
 
-Le but est fixé, les récits sont choisis et découpés, la barre de qualité est
-posée. Le sprint peut commencer.
-
----
+Le but est fixé, les récits sont choisis et attribués, la barre de qualité
+est posée. Le sprint peut commencer.
 
 ## Pendant le sprint
 
@@ -169,8 +165,6 @@ habitudes.
 Ces trois habitudes ont le même rôle : faire en sorte que la fin du sprint
 n'apporte aucune surprise, ni à l'équipe, ni au client.
 
----
-
 ## La revue
 
 À la fin du sprint, l'équipe **montre l'incrément qui fonctionne** au client.
@@ -189,8 +183,6 @@ sprint.
 
 La revue vient de juger le **produit**. Il reste à juger la **façon de
 travailler** — et cela se fait entre vous.
-
----
 
 ## La rétrospective
 
@@ -214,8 +206,6 @@ action concrète, assignée à quelqu'un, est une séance de bavardage.
 > avant d'écrire du code. On revérifie à la prochaine rétrospective.
 
 C'est court, concret, vérifiable. C'est ce qu'on attend.
-
----
 
 ## La boucle se referme
 
