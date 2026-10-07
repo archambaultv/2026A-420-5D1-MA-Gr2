@@ -1,0 +1,113 @@
+---
+sidebar_position: 3
+sidebar_label: Ce que vous remettez
+description: Le dépôt à l'étiquette beta-v1 et le .env transmis en privé — application, backlog, documents, journal
+---
+
+# Ce que vous remettez
+
+Comme au sprint 1, tout vit dans le **dépôt GitHub de votre équipe**. Une seule
+chose voyage à côté : le fichier `.env`, parce qu'il contient des secrets.
+
+## La remise elle-même
+
+À l'échéance, posez une étiquette Git `beta-v1` sur `main` et publiez-la
+(`git tag -a beta-v1 -m "Bêta" && git push origin beta-v1`). Je corrige l'état
+du dépôt **à cette étiquette**.
+
+## Le fichier `.env`
+
+La connexion GitHub passe par une application OAuth que votre équipe enregistre
+sur GitHub (*OAuth App*). Elle a un identifiant et un secret de client.
+
+- Le dépôt contient un `.env.example` qui liste **chaque** variable, avec une
+  valeur bidon et une ligne qui explique à quoi elle sert.
+- Au plus tard à l'échéance, une personne de l'équipe me transmet sur MIO
+  le `.env` complet, celui qui fait fonctionner l'étiquette `beta-v1`.
+- Dans les réglages de l'application OAuth, l'adresse de retour
+  (*Authorization callback URL*) est celle que donne la commande du README, sur
+  `localhost` : la connexion doit fonctionner sur ma machine, pas seulement sur
+  la vôtre.
+
+## L'application
+
+Ce qu'elle doit faire est décrit dans
+[Ce qu'est une version bêta](./1_version_beta.mdx). Le README contient ce qu'il
+faut pour que je puisse l'utiliser sans vous :
+
+- la commande Docker de démarrage et l'adresse à ouvrir;
+- où placer le `.env`, et un renvoi vers `.env.example`;
+- la commande qui exécute les tests;
+- des **comptes de démonstration** avec mot de passe — un par rôle autre que
+  le rôle par défaut, identifiants dans le README —, comme à l'alpha. Le rôle
+  par défaut, je le parcours avec mon propre compte GitHub : voir
+  [La connexion GitHub](./1_version_beta.mdx#la-connexion-github);
+- la liste de
+  [ce qui est simulé](./1_version_beta.mdx#ce-qui-est-simulé-doit-toujours-se-voir)
+  dans la bêta.
+
+## Le backlog de sprint — les tickets
+
+Le backlog se tient **en temps réel**, pas la veille de la remise.
+
+## Les documents
+
+La structure ne change pas; seule la rétrospective du sprint 2 s'ajoute.
+
+```text
+README.md
+.env.example
+docs/
+  01-vision.md
+  02-backlog.md
+  03-conception.md
+  04-sprints.md
+  05-equipe.md
+  06-risques.md
+  journal.md
+  retrospectives/
+    sprint-1.md
+    sprint-2.md
+  maquettes/
+```
+
+- **`README.md`** — Ce qu'il doit contenir est décrit à
+  [L'application](#lapplication).
+- **`01-vision.md`** — Corrigé si la revue du sprint 1 a déplacé la portée,
+  inchangé sinon.
+- **`02-backlog.md`** — Ne bouge toujours pas. Le backlog vivant est sur
+  GitHub.
+- **`03-conception.md`** — Le modèle de données décrit ce qui est réellement
+  dans la base, utilisateurs et rôles compris. Le registre de décisions
+  s'allonge des choix du sprint : bibliothèque OAuth utilisée, façon de tenir
+  la session, rôle attribué à un nouveau compte GitHub, bibliothèque WebSocket
+  et façon d'y authentifier le client.
+- **`04-sprints.md`** — La section du sprint 2, écrite à la
+  [planification](./2_deroulement.mdx#la-planification-8-et-9-octobre) :
+  l'objectif en une phrase, les récits engagés avec leurs points et leur
+  responsable, le total et votre capacité — la vélocité du sprint 1 —, l'ordre
+  d'abandon, le responsable de la mêlée. À la remise, elle se termine par un
+  **bilan de cinq lignes** : points engagés, points **livrés** — un récit à
+  moitié fait vaut toujours zéro point —, vélocité réelle, récits abandonnés et
+  pourquoi. La moyenne de vos deux vélocités servira à planifier le sprint 3.
+- **`05-equipe.md`** — Un tableau des **contributions individuelles** du sprint
+  2, à la suite de celui du sprint 1 : pour chaque membre, les récits dont il
+  était responsable et ce qu'il a réalisé ailleurs, avec les liens vers les
+  demandes de tirage. Il doit correspondre à l'historique Git. Si la définition
+  de « terminé » a changé, dites-le ici.
+- **`06-risques.md`** — Quels risques se sont matérialisés, lesquels ont
+  disparu, lesquels sont apparus.
+- **`journal.md`** — Une entrée par bloc de cours.
+- **`retrospectives/sprint-2.md`** — Le bilan du changement décidé au sprint 1,
+  les trois questions et le nouveau changement décidé, avec son responsable.
+- **`maquettes/`** — Mises à jour si l'interface a changé de direction,
+  notamment pour les écrans propres à un rôle.
+
+:::tip[Le code de chacun doit être identifiable]
+
+- travaillez toujours depuis **votre propre compte** GitHub, jamais depuis la
+  session d'un coéquipier;
+- un travail qui ne laisse aucune trace dans le dépôt est un travail que je ne
+  peux pas constater.
+
+:::

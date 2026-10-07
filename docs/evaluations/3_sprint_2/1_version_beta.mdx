@@ -1,0 +1,58 @@
+---
+sidebar_position: 1
+sidebar_label: La version bêta
+description: Ce que votre application doit faire à l'étiquette beta-v1
+---
+
+# Ce qu'est une version bêta
+
+Tout ce que je vérifiais à l'alpha reste vrai : voir
+[Ce qu'est une version alpha](../2_sprint_1/1_version_alpha.mdx). À l'étiquette
+`beta-v1`, votre application satisfait **en plus** tout ceci :
+
+| # | Ce que je vérifie |
+|---|---|
+| 1 | Un clone neuf du dépôt, le fichier `.env` que vous m'avez transmis en privé, **une commande** documentée dans le README, et l'application est accessible dans un navigateur. Je n'installe toujours rien d'autre que Docker. |
+| 2 | On se connecte avec un **compte GitHub** (OAuth 2), y compris un compte que l'application n'a jamais vu. On se déconnecte aussi. |
+| 3 | Les **rôles et les permissions** sont appliqués **par le serveur** : cacher un bouton ne suffit pas. |
+| 4 | Une **première fonctionnalité temps réel** passe par WebSocket. |
+| 5 | Les parcours que vous vous êtes engagés à livrer fonctionnent de bout en bout, des tests automatisés les couvrent, et la chaîne CI est verte à l'étiquette. |
+
+## La connexion GitHub
+
+Je me connecte avec **mon propre compte GitHub de test**, que vous ne
+connaissez pas à l'avance. Il doit fonctionner dès sa première connexion, sans
+que vous ayez à le préparer, et il reçoit le **rôle par défaut** prévu dans
+`03-conception.md`.
+
+Pour les autres rôles, ce sont les **comptes de démonstration** avec mot de
+passe, comme à l'alpha : un par rôle, identifiants dans le README. Ils obéissent
+aux mêmes permissions que les comptes GitHub du même rôle.
+
+## Le temps réel : une première version
+
+Un **seul parcours** temps réel suffit au sprint 2 : un message, une
+notification, une liste ou un tableau qui se met à jour chez les autres. Je
+l'essaie avec deux navigateurs, deux comptes, côte à côte : l'action de l'un
+apparaît chez l'autre sans rechargement.
+
+Ce qui doit durer passe par la base de données, pas seulement par la mémoire du
+serveur : si je recharge la page, ce qui est arrivé par le WebSocket est
+toujours là.
+
+## Ce que je ne vérifie pas
+
+| # | Ce que je ne vérifie pas |
+|---|---|
+| 1 | **L'apparence.** Comme à l'alpha, la mise en page par défaut de votre bibliothèque suffit. |
+| 2 | **La présence et la concurrence.** Savoir qui est en ligne, régler deux modifications simultanées de la même donnée : c'est le sprint 3. |
+| 3 | **La reconnexion automatique.** Si la connexion WebSocket tombe, recharger la page pour la rétablir est acceptable à la bêta. Une reconnexion robuste mène vers « Avancé ». |
+| 4 | **La mise en ligne.** Le déploiement vient au sprint 3. |
+
+## Ce qui est simulé doit toujours se voir
+
+La règle de l'alpha ne change pas : voir [Ce qui est simulé doit se
+voir](../2_sprint_1/1_version_alpha.mdx#ce-qui-est-simulé-doit-se-voir). Chaque
+béquille est annoncée **à l'écran** et **dans le README**, dans une section «
+Ce qui est simulé dans la bêta ». La liste devrait avoir raccourci depuis
+l'alpha.

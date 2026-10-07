@@ -1,0 +1,107 @@
+---
+sidebar_position: 2
+sidebar_label: Déroulement
+description: Les six blocs du sprint, la planification, les deux points de contrôle, la rétrospective et la revue
+---
+
+# Déroulement des trois semaines
+
+Vous disposez de **six blocs de cours**. À chaque bloc : la
+[mêlée](../../notes_de_cours/agile/2_agile_et_scrum.mdx#la-mêlée-quotidienne-concrètement)
+au début, dix minutes; l'entrée de
+[journal](../1_soumission.mdx#7-journal-de-bord--journalmd) à la fin. Les deux
+points de contrôle sont obligatoires; ils ne sont pas notés sur place, mais
+l'objectif 3 en tient compte.
+
+| Bloc | Date | Ce qui se passe | Ce que vous apportez |
+|---|---|---|---|
+| 1 | **jeudi 8 octobre** | **Revue du sprint 1** (20 min par équipe), puis **planification du sprint 2** et développement | L'alpha qui tourne, à l'étiquette `alpha-v1` |
+| 2 | **vendredi 9 octobre** | Développement | — |
+| 3 | **lundi 19 octobre** | **Point de contrôle 1** — 10 minutes : suivi de votre méthode agile | Votre sprint engagé, le changement de la rétrospective en place, votre backlog et votre journal à jour |
+| 4 | **jeudi 22 octobre** | Développement | — |
+| 5 | **lundi 26 octobre** | **Point de contrôle 2** — 10 minutes : démonstration de l'état du dépôt | L'application démarre à partir d'un clone neuf, la connexion GitHub fonctionne, la chaîne CI tourne, **au moins un récit est terminé**, journal à jour |
+| 6 | **jeudi 29 octobre** | Dernier bloc de travail; **rétrospective** en fin de bloc; appréciation entre coéquipiers; **remise à 23 h 59** | Étiquette `beta-v1` posée sur `main`, `.env` transmis en privé |
+| 7 | **premier cours de la semaine 10** | **Revue de sprint** (20 min par équipe), puis début du sprint 3 | — |
+
+## La planification (8 et 9 octobre)
+
+Après la revue du sprint 1, votre équipe tient sa
+[planification](../../notes_de_cours/agile/6_sprint.mdx#la-planification) du
+sprint 2 et l'écrit dans `04-sprints.md`, à la suite de la section du sprint 1 :
+l'objectif en une phrase, les récits engagés avec leurs points et leur
+responsable, le total, l'ordre d'abandon, le responsable de la mêlée.
+
+La différence avec le sprint 1 : votre capacité n'est plus une estimation. Elle
+est **la vélocité réelle du sprint 1**.
+
+La planification est commise au plus tard à la fin du bloc du 9 octobre.
+
+## Point de contrôle 1 — la méthode agile (19 octobre)
+
+Dix minutes à votre table. Comme au sprint 1, je viens voir votre **façon de
+travailler**, pas votre code.
+
+- **Le sprint est engagé sur votre vélocité** : `04-sprints.md` porte
+  l'engagement du sprint 2, le total correspond à la vélocité du sprint 1 ou
+  l'écart est expliqué, **chaque récit a un responsable** et chaque membre en a
+  au moins un.
+- **Le changement de la rétrospective est en place** : vous me montrez où il se
+  voit — dans le journal, les tickets, l'historique ou votre façon de tenir la
+  mêlée.
+- **La progression est visible** : chaque responsable pousse sa branche à chaque
+  bloc de cours, quitte à n'être qu'un commit de travail en cours (`WIP`).
+- **Le backlog est vivant** : des tickets ont changé d'état depuis le 8 octobre,
+  et l'ordre de priorité correspond à ce que vous faites vraiment.
+- **Le journal est à jour**.
+
+## Point de contrôle 2 — la bêta tient debout (26 octobre)
+
+Avant-dernier bloc avant la remise, dix minutes à votre table :
+
+- on clone le dépôt sur une machine neuve, on y dépose le `.env`, on lance la
+  commande du README, on ouvre le navigateur;
+- on se connecte avec un **compte GitHub** que l'application n'a jamais vu;
+- vous me montrez la **chaîne CI** : dernière exécution, ce qu'elle lance, si
+  elle est verte;
+- vous me montrez **un récit terminé** : ticket fermé par une demande de tirage
+  fusionnée, revue par un coéquipier, avec ses tests;
+- le backlog et le journal sont à jour.
+
+Si rien de cela n'existe le 26, la bêta est compromise. Il vous restera un bloc
+de cours et trois jours : c'est le moment d'appliquer votre ordre d'abandon,
+pas de tout tenter.
+
+## La rétrospective (29 octobre)
+
+En fin de bloc, avant de poser l'étiquette, **entre vous**, trente minutes. Le
+compte rendu va dans `docs/retrospectives/sprint-2.md`.
+
+Il commence par le **changement décidé au sprint 1** : l'avez-vous vraiment
+essayé, qu'a-t-il donné, le gardez-vous, l'ajustez-vous ou l'abandonnez-vous ?
+Viennent ensuite les trois questions des notes de cours,
+[La rétrospective](../../notes_de_cours/agile/6_sprint.mdx#la-rétrospective), et
+au moins un nouveau changement précis, **assigné à quelqu'un**, que vous
+essaierez au sprint 3.
+
+Après la rétrospective, chaque personne remplit **individuellement** le
+formulaire d'appréciation de ses coéquipiers. Confidentiel, lien sur LÉA, il
+compte parmi les traces qui alimentent la note individuelle.
+
+## La revue de sprint (semaine 10)
+
+Vingt minutes par équipe, au premier cours de la semaine 10. L'objet de la
+discussion est le **logiciel** — voir
+[La revue](../../notes_de_cours/agile/6_sprint.mdx#la-revue).
+
+- **10 minutes** — démonstration de la bêta. L'application tourne déjà quand
+  j'arrive, dans l'état de l'étiquette `beta-v1`, dans **deux navigateurs**
+  connectés avec deux rôles différents. Vous parcourez chaque récit terminé
+  comme l'utilisateur le ferait, y compris le temps réel d'un navigateur à
+  l'autre et au moins une action **refusée** à un rôle qui n'y a pas droit.
+  Puis le backlog : engagé, livré, abandonné et pourquoi.
+- **10 minutes** — mes questions, sur n'importe quelle partie du travail, à
+  n'importe qui.
+
+Chacun doit pouvoir expliquer le code de l'équipe, pas seulement le sien —
+y compris comment la connexion et les permissions fonctionnent. C'est
+notamment ici que j'ajuste les notes individuelles.

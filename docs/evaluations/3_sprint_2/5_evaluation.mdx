@@ -1,0 +1,170 @@
+---
+sidebar_position: 5
+sidebar_label: Évaluation
+description: Les trois objectifs du sprint 2, avec les critères « Acquis » et « Avancé »
+---
+
+# Évaluation
+
+Cette évaluation est notée selon le [barème du cours](../0_notation.mdx). Elle
+est découpée en trois objectifs, notés séparément, puis combinés selon les
+poids ci-dessous.
+
+| Objectif | Poids |
+|---|---|
+| 1 — L'incrément bêta | 40 % |
+| 2 — Qualité du code, sécurité, tests et intégration continue | 30 % |
+| 3 — Conduite du sprint et traces de travail | 30 % |
+
+Chaque objectif indique aussi **ce qui mène à « Avancé »**. Ce sont des
+exemples, pas une liste à cocher : une autre initiative qui va réellement plus
+loin, et qui est faite proprement, compte autant. « Avancé » s'obtient **en
+plus** de « Acquis », jamais à la place. Une reconnexion WebSocket impeccable
+dans une application dont les permissions se contournent en tapant une adresse
+ne vaut rien.
+
+
+## Objectif 1 — L'incrément bêta (40 %)
+
+L'application sait qui est connecté, ce que chacun a le droit de faire, et
+réagit en temps réel.
+
+**Pour atteindre « Acquis »**
+
+- Sur une machine où seul Docker est installé, un clone neuf, le `.env` que
+  vous m'avez transmis et **une** commande du README démarrent l'application.
+  J'arrête les conteneurs, je les relance : les données sont toujours là.
+- La connexion GitHub fonctionne de bout en bout avec **mon compte de test**,
+  que vous ne connaissez pas : à sa première connexion, il reçoit le rôle par
+  défaut prévu dans `03-conception.md`. La déconnexion fonctionne aussi.
+- Les permissions tiennent quand je les contourne en tapant l'adresse ou en
+  envoyant la requête à la main : page demandée sans être connecté, action réservée à un autre rôle, ressource
+  d'un autre utilisateur, et la même chose par le WebSocket.
+- Le parcours temps réel fonctionne entre deux navigateurs, sans rechargement,
+  et ce qui doit durer est toujours là après un rechargement.
+- Les parcours engagés fonctionnent de bout en bout, et **chacun satisfait tous
+  les critères d'acceptation de son récit**, y compris les cas d'erreur.
+- Mon compte GitHub et les comptes de démonstration du README permettent de
+  parcourir l'application dans chaque rôle, sans intervention de votre part.
+- Ce qui est simulé est annoncé **à l'écran et dans le README**; les béquilles
+  promises pour le sprint 2 ont disparu, ou leur report est écrit. Aucun récit
+  qui repose sur une béquille n'est présenté comme terminé.
+- Les remarques faites à la revue du sprint 1 sont intégrées, ou leur report
+  est justifié dans `03-conception.md`.
+- L'écart entre l'engagement et le livré, s'il y en a un, suit l'**ordre
+  d'abandon** écrit au début du sprint; il n'est pas découvert à la revue.
+- À la revue, les parcours sont montrés et expliqués. Je choisis le membre qui
+  présente chaque partie, pas seulement celui qui l'a codée.
+
+**Pour aller vers « Avancé »**
+
+- L'expérience est conçue pour **le mobile et le bureau** : les écrans du
+  sprint 2 — connexion, écrans propres à chaque rôle, temps réel — ont une
+  disposition pensée pour un téléphone, et pas seulement un site qui rétrécit.
+  Les maquettes mobiles sont dans `docs/maquettes/`.
+- Ou bien un **client mobile compagnon**, natif ou hybride, issu du cours
+  420-5D6, consomme la même API que le web pour au moins un parcours complet
+  **authentifié**, et démarre à partir du dépôt avec ses instructions.
+- Ou bien une **reconnexion WebSocket robuste** : quand la connexion tombe —
+  réseau coupé, serveur redémarré —, l'interface le signale, le client se
+  reconnecte seul en espaçant ses tentatives, puis rattrape ce qu'il a manqué
+  sans rechargement et sans doublon.
+- Ou bien une **connexion par mot de passe robuste**, à côté de la connexion
+  GitHub : règles de mot de passe raisonnables, réinitialisation par un lien à
+  usage unique qui expire, limite aux tentatives répétées, double
+  authentification (par exemple un code TOTP) avec codes de secours.
+
+## Objectif 2 — Qualité du code, sécurité, tests et intégration continue (30 %)
+
+Le code peut être repris par quelqu'un d'autre, il ne laisse pas de porte
+ouverte, et la chaîne de tests le protège.
+
+**Pour atteindre « Acquis »**
+
+- Les couches — pages, logique serveur, accès aux données — sont séparées, et le
+  nommage suit les conventions de `05-equipe.md` d'un bout à l'autre du dépôt.
+- La vérification des permissions est **centralisée** — intergiciel, décorateur,
+  politique, selon votre cadriciel — plutôt que recopiée dans chaque route.
+- Le dépôt ne traîne rien d'inutile : pas de fonction jamais appelée, pas de
+  dépendance jamais importée, pas de fichier laissé « au cas où ».
+- Chaque récit terminé est couvert par au moins un test qui **devient rouge si
+  on casse son comportement**. En plus, **chaque permission a un test
+  qui vérifie le refus**.
+- Chaque demande de tirage est revue avant fusion par un coéquipier qui n'a pas
+  écrit le code, et la revue **laisse une trace lisible**.
+- Aucun secret n'est dans le dépôt ni dans son historique, et le secret de
+  l'application OAuth ne parvient jamais au navigateur. Le flux OAuth passe par une
+  bibliothèque reconnue, pas par du code maison.
+- Les témoins de session sont `HttpOnly` et `SameSite`; les formulaires qui
+  modifient des données sont protégés contre la falsification de requête
+  (CSRF); ce qui est affiché est échappé (XSS). Les entrées sont validées côté
+  serveur, **y compris les messages reçus par le WebSocket**.
+- Les acquis précédents tiennent : pas d'injection SQL possible, mots de passe
+  hachés s'il en reste, pas de trace de débogage laissée dans le code livré.
+
+**Pour aller vers « Avancé »**
+
+- Les tests existent à plusieurs niveaux : unitaires, intégration contre une
+  vraie base de données dans la CI, et au moins un test de bout en bout dans un
+  navigateur — par exemple un test
+  [Playwright](https://playwright.dev/docs/intro) qui ouvre
+  [deux contextes de navigateur](https://playwright.dev/docs/browser-contexts)
+  pour vérifier le temps réel d'un compte à l'autre.
+- La chaîne CI construit l'image Docker, vérifie le formatage ou le *linting*
+  et **audite les dépendances** pour les vulnérabilités connues; la branche
+  `main` est protégée et refuse la fusion tant que tout n'est pas vert.
+
+## Objectif 3 — Conduite du sprint et traces de travail (30 %)
+
+L'équipe a planifié avec ce qu'elle a appris au sprint 1, a suivi son
+avancement, et le travail de chacun est visible et daté sans que j'aie à le
+demander.
+
+**Pour atteindre « Acquis »**
+
+- `04-sprints.md` porte l'objectif du sprint 2 en une phrase et l'engagement
+  en points, **calé sur la vélocité réelle du sprint 1** ou avec l'écart
+  expliqué. La date du commit montre qu'ils ont été écrits **au début** du
+  sprint.
+- Chaque récit engagé a un responsable nommé, et **chaque membre de l'équipe est
+  responsable d'au moins un récit**.
+- Le changement décidé à la rétrospective du sprint 1 a été **essayé**, et on en
+  voit la trace pendant le sprint; la rétrospective du sprint 2 dit ce qu'il a
+  donné.
+- Les changements d'état des tickets sont **étalés sur les trois semaines**, pas
+  groupés dans les jours qui précèdent la remise.
+- Le journal compte **une entrée par bloc de cours, commise le jour du bloc**.
+  Chaque entrée nomme des personnes, des numéros de tickets et des décisions
+  avec leur raison.
+- L'historique montre des commits de **chaque membre** répartis sur les trois
+  semaines, rattachés à leur ticket.
+- Le tableau des contributions de `05-equipe.md` correspond à ce que dit
+  l'historique Git.
+- Les abandons ont suivi l'ordre d'abandon, ou l'écart est expliqué; le bilan
+  donne points engagés, points livrés et vélocité réelle.
+- La rétrospective a eu lieu et se conclut par un nouveau changement concret,
+  assigné à quelqu'un. Les deux points de contrôle ont eu lieu avec ce qui était
+  demandé.
+- À la revue, chaque membre explique n'importe quelle partie du projet, pas
+  seulement la sienne.
+
+**Pour aller vers « Avancé »**
+
+- L'équipe s'est mesurée pendant le sprint — points restants par bloc, sous
+  forme de tableau ou de *burndown* — et cette mesure a mené à **une décision**
+  qu'on retrouve datée dans le journal.
+- Un récit qui a dérapé a été redécoupé ou renégocié **pendant** le sprint
+  plutôt que traîné jusqu'à la fin, et la trace de cette décision existe.
+- Vous avez été présent à tous les blocs de cours et vous avez poussé votre
+  travail à chaque bloc.
+
+:::warning[Note individuelle]
+
+Même si le travail est fait en équipe, la note est individuelle. La revue de
+sprint, le journal, le tableau des contributions, l'historique Git et le
+formulaire d'appréciation entre coéquipiers me servent à évaluer l'apport de
+chaque personne. Un écart marqué entre ce qu'une équipe livre et ce qu'un de
+ses membres est capable d'en expliquer — ou d'en montrer dans l'historique —
+se traduit par un écart de note.
+
+:::
