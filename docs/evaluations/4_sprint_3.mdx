@@ -1,15 +1,216 @@
 ---
 sidebar_position: 4
 sidebar_label: Sprint 3
-description: Énoncé du sprint 3
+description: Énoncé du sprint 3 — la version finale, en ligne
 ---
 
-# Sprint 3
+# Sprint 3 — version finale
 
-- **Pondération** : 20%
+- **Pondération** : 25 %
+- **Durée** : quatre semaines
+- **Remise** : jeudi 3 décembre 2026 à 23 h 59, étiquette `finale-v1`
 
-:::warning
+:::note[Dates importantes]
 
-Détails à venir.
+- **Jeudi 5 novembre, fin du bloc** — la planification du sprint 3 est commise
+  dans `04-sprints.md`;
+- **Jeudis 12, 19 et 26 novembre et 3 décembre** — point de contrôle, **noté**;
+- **Jeudi 3 décembre, 23 h 59** — remise.
+
+Il n'y a ni revue ni rétrospective à la fin de ce sprint. Vous devez être
+présents à tous les points de contrôle. Si vous ne pouvez pas, prévenez-moi
+**avant**.
+
+:::
+
+## La règle du sprint : ce qui marche passe avant ce qui s'ajoute
+
+Le sprint 3 se termine par un vrai site, en ligne. **Une application qui fait
+moins de choses, mais les fait toutes correctement, vaut plus qu'une
+application qui en fait beaucoup et plante.**
+
+## Ce que la version finale doit faire
+
+Toutes les exigences de la bêta restent en vigueur : voir
+[Ce qu'est une version bêta](./3_sprint_2/1_version_beta.mdx). À l'étiquette
+`finale-v1`, votre application satisfait **en plus** tout ceci :
+
+| # | Exigence |
+|---|---|
+| 1 | **En ligne** : le site est déployé sur un serveur, selon les modalités présentées en classe, et accessible depuis n'importe quel réseau à l'adresse indiquée dans le README. Il roule la version de l'étiquette `finale-v1` et reste en ligne jusqu'au 23 décembre. |
+| 2 | **Temps réel complet** : la fonctionnalité temps réel au cœur de votre projet fonctionne de bout en bout entre plusieurs navigateurs. |
+| 3 | **Présence** : l'application montre qui est connecté ou présent, là où cela a du sens dans votre projet, et retire une personne qui s'en va. |
+| 4 | **Concurrence** : le point de concurrence décrit dans `03-conception.md` donne un résultat correct quand deux personnes agissent au même moment. |
+| 5 | **Aucun bogue visible** : tout ce que l'interface offre fonctionne. Pas de page d'erreur, de bouton sans effet ni de récit à moitié fait. |
+
+Le démarrage local avec Docker reste exigé : un clone neuf, le `.env` transmis
+en privé et une commande. Une application OAuth de GitHub n'accepte qu'une
+adresse de retour : enregistrez-en donc deux, une pour le site en ligne et une
+pour `localhost`.
+
+## La planification (2 et 5 novembre)
+
+Comme au sprint 2, votre équipe tient sa
+[planification](../notes_de_cours/agile/6_sprint.mdx#la-planification) et
+l'écrit dans `04-sprints.md` : l'objectif en une phrase, les récits engagés
+avec leurs points et leur responsable, le total, l'ordre d'abandon, le
+responsable de la mêlée.
+
+Votre capacité est la **moyenne des vélocités des sprints 1 et 2**, ramenée à
+quatre semaines plutôt que trois. Réservez-en une bonne part au déploiement,
+aux tests sur le site en ligne et à la correction de bogues.
+
+À chaque bloc : la mêlée au début, l'entrée de
+[journal](./1_soumission.mdx#7-journal-de-bord--journalmd) à la fin.
+
+## Les points de contrôle
+
+Chaque jeudi, **toute l'équipe doit être présente**. Le point de contrôle porte sur votre
+application de la méthode agile, pas sur votre code. J'observe notamment :
+
+1. **La mêlée** — votre équipe fait la mêlée correctement.
+2. **Le backlog vivant** — des tickets ont changé d'état depuis le dernier
+   jeudi, chaque ticket en cours a un responsable, et l'ordre de priorité
+   correspond à ce que vous faites vraiment.
+3. **Le travail de chacun** — chaque membre a poussé du travail depuis le
+   dernier jeudi, rattaché à un ticket; les demandes de tirage fusionnées ont
+   été revues par un coéquipier.
+4. **Le journal** — une entrée par bloc de cours, commise le jour du bloc.
+
+## Ce que vous remettez
+
+Tout vit toujours dans le dépôt de l'équipe. La correction porte sur l'état du
+dépôt à l'étiquette `finale-v1`, posée sur `main`.
+
+- **Le `.env`** pour le démarrage local, transmis sur MIO comme à la bêta. Les
+  secrets de production restent sur le serveur : ne les envoyez pas.
+- **Le README** contient tout le nécessaire pour démarrer l'application
+  localement et pour accéder au site en ligne.
+- **`04-sprints.md`** — la section du sprint 3, écrite à la planification, qui
+  se termine par le **bilan de cinq lignes** : points engagés, points livrés,
+  vélocité réelle, récits abandonnés et pourquoi.
+- **`journal.md`** — une entrée par bloc de cours.
+
+## Évaluation
+
+Cette évaluation est notée selon le [barème du cours](./0_notation.mdx). Elle
+est découpée en quatre objectifs, notés séparément, puis combinés selon les
+poids ci-dessous.
+
+| Objectif | Poids |
+|---|---|
+| 1 — La version finale en ligne | 35 % |
+| 2 — Qualité du code, sécurité, tests et intégration continue | 25 % |
+| 3 — Traces de travail | 15 % |
+| 4 — Points de contrôle | 25 % |
+
+### Objectif 1 — La version finale en ligne (35 %)
+
+N'importe qui peut utiliser le site, en ligne, sans tomber sur un bogue.
+
+**Pour atteindre « Acquis »**
+
+- Le site est accessible à l'adresse du README depuis n'importe quel réseau, il
+  roule la version `finale-v1` et il le reste jusqu'au 23 décembre.
+- Sur une machine où seul Docker est installé, un clone neuf, le `.env` et
+  **une** commande du README démarrent aussi l'application; les données
+  survivent à un redémarrage des conteneurs.
+- La connexion GitHub fonctionne sur le site en ligne avec **un compte de test
+  de l'enseignant**; les comptes de démonstration permettent de parcourir chaque rôle.
+- **Tout ce que l'interface offre fonctionne.** Aucun lien, bouton ou page ne
+  mène à une erreur, à une page blanche ou à un récit à moitié fait. Ce qui
+  n'était pas prêt a été retiré.
+- La fonctionnalité temps réel fonctionne entre plusieurs navigateurs, sans
+  rechargement, et ce qui doit durer est toujours là après un rechargement.
+- La présence est visible là où elle a du sens, et une personne qui ferme son
+  onglet disparaît dans un délai raisonnable.
+- Quand deux personnes font la même action sur la même ressource au même
+  moment, le résultat est correct : pas de doublon, pas de perte silencieuse,
+  et celle dont l'action n'a pas abouti le sait.
+- Les permissions tiennent sur le site en ligne quand on tente de les
+  contourner, par HTTP comme par le WebSocket.
+- Chaque récit terminé satisfait tous ses critères d'acceptation, y compris les
+  cas d'erreur. Aucun récit qui repose sur une béquille n'est présenté comme
+  terminé.
+
+**Pour aller vers « Avancé »**
+
+- L'expérience est conçue pour **le mobile et le bureau**.
+- Ou bien un **client mobile compagnon**, issu du cours 420-5D6, consomme la
+  même API pour au moins un parcours authentifié.
+- Ou bien une **reconnexion WebSocket robuste** : l'interface signale la
+  coupure, le client se reconnecte seul et rattrape ce qu'il a manqué, sans
+  doublon.
+
+### Objectif 2 — Qualité du code, sécurité, tests et intégration continue (25 %)
+
+**Pour atteindre « Acquis »**
+
+- Qualité du code : couches séparées, permissions centralisées,
+  pas de code mort, un test par récit terminé qui devient rouge si on casse son
+  comportement, un test de refus par permission, revue lisible de chaque
+  demande de tirage, aucun secret dans le dépôt, protections contre CSRF, XSS
+  et injection SQL, validation côté serveur y compris par le WebSocket.
+- Le point de concurrence a un **test automatisé** qui simule deux écritures
+  simultanées et vérifie le résultat.
+- La chaîne CI est verte à l'étiquette.
+
+**Pour aller vers « Avancé »**
+
+- Au moins un test de bout en bout dans un navigateur, par exemple un test
+  [Playwright](https://playwright.dev/docs/intro) qui ouvre
+  [deux contextes](https://playwright.dev/docs/browser-contexts) pour vérifier
+  le temps réel, la présence ou la concurrence.
+- La chaîne CI construit l'image Docker, vérifie le *linting*, audite les
+  dépendances, et `main` refuse la fusion tant que tout n'est pas vert.
+
+### Objectif 3 — Traces de travail (15 %)
+
+Le travail de chacun est visible et daté sans qu'il faille le demander.
+
+**Pour atteindre « Acquis »**
+
+- La section du sprint 3 de `04-sprints.md` a été commise au plus tard le 5
+  novembre; la capacité part de vos vélocités, et **chaque membre est
+  responsable d'au moins un récit**.
+- Le journal compte **une entrée par bloc de cours, commise le jour du bloc**,
+  qui nomme des personnes, des tickets et des décisions avec leur raison.
+- L'historique montre des commits de **chaque membre**, répartis sur les quatre
+  semaines et rattachés à leur ticket.
+- Le bilan donne points engagés, points livrés et vélocité réelle; les abandons
+  ont suivi l'ordre d'abandon, ou l'écart est expliqué.
+
+**Pour aller vers « Avancé »**
+
+- Vous avez fait une contribution significative à votre projet.
+- Ou vous avez fait votre juste part dans une équipe qui a livré un projet de grande qualité.
+
+**Pour les niveaux inférieurs à « Acquis »**
+
+- Votre contribution est faible ou absente.
+
+### Objectif 4 — Points de contrôle (25 %)
+
+Chacun des quatre [points de contrôle](#les-points-de-contrôle) est noté
+séparément selon le barème du cours; la note de l'objectif est leur moyenne.
+
+**Pour atteindre « Acquis »** à un point de contrôle
+
+- Le point de contrôle a eu lieu à l'heure et toute l'équipe était présente.
+- Le point de contrôle est conforme à ce qui est demandé dans le présent document.
+
+**Pour aller vers « Avancé »**
+
+- L'équipe utilise de façon exemplaire la méthode agile et revoit son backlog
+  et ses récits à chaque bloc de cours, pas seulement avant les points de
+  contrôle.
+
+:::warning[Note individuelle]
+
+Même si le travail est fait en équipe, la note est individuelle. Les points de
+contrôle, le journal et l'historique Git
+servent à évaluer l'apport de chaque personne. Un écart marqué entre ce qu'une
+équipe livre et ce qu'un de ses membres est capable d'en expliquer — ou d'en
+montrer dans l'historique — se traduit par un écart de note.
 
 :::
