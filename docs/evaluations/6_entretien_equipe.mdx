@@ -1,0 +1,139 @@
+---
+sidebar_position: 6
+sidebar_label: Entretien d'équipe
+description: Énoncé de l'entretien d'équipe
+---
+
+# Entretien d'équipe
+
+- **Pondération** : 10 %
+- **Date** : une équipe le lundi 14 décembre, après les présentations
+  orales; les trois autres le jeudi 17 décembre
+- **Durée** : 1 heure par équipe
+- **Présence** : l'équipe et le professeur seulement
+
+L'entretien se déroule comme une **passation de projet**. Votre équipe quitte
+le projet, et une autre équipe de développement va reprendre et maintenir le
+site. Je joue le rôle de son développeur principal : avant d'accepter le
+projet, je veux savoir exactement ce que je reçois. Ce qui compte : ce qui a été
+livré, comment ça fonctionne, pourquoi c'est fait ainsi, et ce qui reste à
+faire.
+
+C'est donc moi qui mène l'entretien : je pose les questions, je choisis les
+parties du code à examiner et la personne qui répond.
+
+C'est l'inverse de la [présentation orale](./5_presentation_orale.mdx), où vous
+vendez le produit à un client qui ne programme pas. Ici, vous parlez à un
+développeur.
+
+Pendant l'entretien, je vous demanderai aussi un petit changement à
+l'application. Vous n'avez pas à le coder : vous devez le transformer en récit,
+l'estimer et le placer dans le backlog restant.
+
+## Évaluation
+
+Cette évaluation est notée selon le [barème du cours](./0_notation.mdx). Elle
+est découpée en quatre critères.
+
+| Critère | Poids |
+|---|---|
+| 1 — Bilan honnête de la livraison | 15 % |
+| 2 — Compréhension globale et choix d'équipe | 25 % |
+| 3 — Maîtrise de sa contribution | 40 % |
+| 4 — Traitement d'une demande de changement | 20 % |
+
+### Critère 1 — Bilan honnête de la livraison (15 %)
+
+**Pour atteindre « Acquis »**
+
+- Vous comparez ce qui avait été promis à ce qui est livré. Les chiffres que
+  vous donnez (points engagés, points livrés) correspondent à vos bilans dans
+  `04-sprints.md`.
+- Vous nommez les récits abandonnés et expliquez pourquoi ils l'ont été.
+- Vous présentez les bogues et les limites connus.
+
+**Pour aller vers « Avancé »**
+
+- Pour chaque écart important entre ce qui était promis et ce qui est livré,
+  vous nommez une cause précise (sous-estimation, dépendance, problème
+  technique, organisation) et le changement concret que vous avez fait, ou que
+  vous feriez, pour l'éviter.
+
+### Critère 2 — Compréhension globale et choix d'équipe (25 %)
+
+**Pour atteindre « Acquis »**
+
+Je pose ces questions à n'importe quel membre de l'équipe, pas nécessairement
+à celui qui a codé la partie concernée. Le membre interrogé :
+
+- décrit ou dessine l'architecture de l'application : les conteneurs, les
+  couches, la base de données, le déploiement;
+- suit le chemin d'une action que je choisis en nommant, dans l'ordre, les
+  composants traversés, de l'interface jusqu'à la base de données et retour, y
+  compris pour le temps réel;
+- explique comment le point de concurrence est réglé et montre où c'est fait
+  dans le code;
+- pour chaque choix d'équipe sur lequel je l'interroge (technologies,
+  architecture, modèle de données, solution au point de concurrence), donne la
+  raison du choix et au moins une autre option que l'équipe a envisagée.
+
+**Pour aller vers « Avancé »**
+
+- Je décris un symptôme observé en production : un message n'arrive pas chez
+  un autre utilisateur, une action est refusée sans raison, une page est lente.
+  Le membre interrogé dit où il chercherait, dans quel ordre, et ce qu'il
+  consulterait (journaux des conteneurs, base de données, outils du
+  navigateur), jusqu'à cibler l'endroit du code en cause.
+
+### Critère 3 — Maîtrise de sa contribution (40 %)
+
+Ce critère est noté **individuellement**.
+
+**Pour atteindre « Acquis »**
+
+- Vous retrouvez sans aide, dans le dépôt, le code que vous avez écrit, et
+  vous expliquez ce qu'il fait.
+- Vous répondez aux questions de détail : que se passe-t-il dans tel cas
+  d'erreur, où est le test qui couvre ce comportement.
+- Ce que vous dites avoir fait correspond à ce que montre l'historique Git.
+- Pour chaque choix de conception de votre partie sur lequel je vous
+  interroge, vous donnez la raison du choix, au moins une autre option
+  envisagée, et ce que ce choix a coûté (fonctionnalité, performance, temps).
+
+**Pour aller vers « Avancé »**
+
+- Je vous demande une petite modification à votre propre code : ajouter une
+  validation, changer un comportement, gérer un cas limite. Sans la coder, vous
+  ouvrez les bons fichiers, vous montrez les lignes précises à changer, vous
+  décrivez le changement et ses effets sur le reste de l'application, et vous
+  dites quel test devrait changer.
+
+### Critère 4 — Traitement d'une demande de changement (20 %)
+
+Pendant l'entretien, je vous demande un petit changement à l'application. Vous
+avez quelques minutes pour en discuter en équipe.
+
+**Pour atteindre « Acquis »**
+
+- Vous reformulez la demande sous forme de récit, avec des critères
+  d'acceptation.
+- Vous nommez les parties de l'application à modifier : pages, routes, tables,
+  événements WebSocket, tests.
+- Vous estimez le récit en points et vous justifiez l'estimation en la
+  comparant à un récit que vous avez déjà livré.
+- Vous dites où vous le placeriez dans le backlog restant, et pourquoi.
+
+**Pour aller vers « Avancé »**
+
+- Sans que je vous le signale, vous repérez un effet de la demande sur ce qui
+  existe déjà (permissions, temps réel, concurrence, données déjà en base) et
+  vous en tenez compte dans les critères d'acceptation et dans l'estimation.
+- Si la demande est trop grosse pour un seul récit, vous la découpez en récits
+  livrables séparément, chacun utile à l'utilisateur, et vous dites lequel
+  livrer en premier.
+
+:::warning[Note individuelle]
+
+Même si l'entretien se fait en équipe, la note est individuelle.
+
+:::
